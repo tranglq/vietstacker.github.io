@@ -1,7 +1,7 @@
 ---
 layout: post
 title: [Tản mạn][Devops][OpenStack Cloud] Chuyện giờ mới kể
-date: 2017-04-14 16:03:13.0000000 +07:0
+date: 2017-04-14
 type: post
 published: true
 status: publish
