@@ -21,7 +21,7 @@ author:
 
 Có quá nhiều lý thuyết, khái niệm liên quan đến 2 từ này: Serverless và Devops. Và tất nhiên tôi cũng sẽ không nhắc lại nữa, tôi sẽ chỉ tản mạn xung quanh 2 từ này để các bạn có thể thấy được trong thực tế nó như thế nào.
 
-1. Serverless
+### Serverless
 
 Nói nôm na là "không server". Cái vấn đề là không server ở đây là server nào, đó là server (vật lý, ảo hóa) nơi mà các app chạy trên? Để trả lời câu hỏi này thì tôi nghĩ hay nhất là ta nên đứng dưới góc nhìn nào để định nghĩa nó. Và cá nhân tôi nghĩ thì hay hơn cả là ta nên đứng dưới cái nhìn của app/người deloy app. Thêm một lưu ý nữa tức là nói đến serverless thì ta nên nói trong bối cảnh cloud.
 
@@ -31,7 +31,7 @@ Tuy nhiên, nếu các bạn có mononith app hoặc legacy app thì các bạn 
 
 Qua đó ta thấy rằng, với serverless, các app sẽ chỉ còn là tập hợp các function. Ta có thể upload các functions này lên cloud và chỉ định datacenter mà ta muốn nó chạy trên, e.g. DC Bắc Mỹ chẳng hạn:d. Ngoài ra ta sẽ phải chọn xem ta muốn RAM là bao nhiều, disk dung lượng bao nhiêu, cao cấp hơn thì QoS là bao nhiêu, etc. và ta sẽ phải trả tiền cho số dung lượng ta dùng. Một ví dụ cụ thể hiện nay chính là AWS Lambda của Amazon. Cá nhân mình không cổ xúy cho bất cứ giải pháp nào nhưng phải công nhận một điều, Amazon thực sự mạnh, rất mạnh là đằng khác.
 
-2. Devops
+### Devops
 
 Nói về ông này thì nhiều vô kể nhưng tôi muốn nhấn mạnh đến một khía cạnh sau của nó mà rất nhiều người lầm tưởng: Docker/Container sẽ thay thế/giết Devops
 
