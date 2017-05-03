@@ -44,9 +44,9 @@ This is actually using TripleO of Redhat to deploy VIM. Undercloud will be insta
 2. No .yaml file configuration. This information should be checked again??
 3. Sanity checks before deployment, e.g. checks that there is connectivity between every node on each NIC
 4. Public IP range does not have to be continuous
-5. All logs can be found in Fuel dashboard (every node and every openstack service log)
-  * Log files are also stored in fuel node. They are collected through rsyslog 
-  * Extremely useful when debugging
+5. All logs can be found in Fuel dashboard (every node and every openstack service log):
+    * Log files are also stored in fuel node. They are collected through rsyslog 
+    * Extremely useful when debugging
 6. Fuel has its own health check which can be run from the dashboard
 7. Supports JH reboot
 8. ssh-keys automatically setup with host names configured, easy to access: ssh node-1, ssh node-2 etc
@@ -54,9 +54,9 @@ This is actually using TripleO of Redhat to deploy VIM. Undercloud will be insta
 ### Cons
 1. PXE and admin network are separate, meaning one additional NIC is required or VLAN segmentation has to be used. Not really a problem but requires switch config.
 2. ”Local” installation not as easy as in Apex. Supposedly it should work by changing the repository mirror address in Fuel dashboard to the IP address of the JH, but sometimes it does not work. Could be a network configuration problem.
-3. Functional test docker does not work out of the box. Iptables need some additional configurations of postrouting rule for docker subnet.
-  * ( iptables -t nat -A POSTROUTING -s IP_ADDRESS -j MASQUERADE )
-  * Might be easier to run functional test from a controller but Docker is not installed within controller.
+3. Functional test docker does not work out of the box. Iptables need some additional configurations of postrouting rule for docker subnet:
+    * ( iptables -t nat -A POSTROUTING -s IP_ADDRESS -j MASQUERADE )
+    * Might be easier to run functional test from a controller but Docker is not installed within controller.
 4. JH runs on CentOS 7 while nodes run on Ubuntu
 5. Slower DHCP than Apex: vping test takes roughly 140s in Fuel; 80s in Apex. This information should be checked again?
   Most likely an ODL problem
