@@ -25,7 +25,7 @@ This is actually using TripleO of Redhat to deploy VIM. Undercloud will be insta
 
 1. Same OS (CentOS 7) on JH and nodes
 2. RPMs are available from artifacts so no need to reinstall OS on JH. Actually, artifacts are the local copies of all the RPM packages.
-  Useful e.g. when upgrading Apex version
+  - Useful e.g. when upgrading Apex version
 3. Same interface for PXE boot and Openstack admin/MGMT network. Therefore we do not need two NICs for them or VLAN segmentation configured in switch.
 4. JH will forward the internet access through admin network, therefore there is no need of direct Internet access to the nodes.
 5. Functional test is running inside docker that is running on JH. There is no need of iptables modifications for docker running.
@@ -45,8 +45,8 @@ This is actually using TripleO of Redhat to deploy VIM. Undercloud will be insta
 3. Sanity checks before deployment, e.g. checks that there is connectivity between every node on each NIC
 4. Public IP range does not have to be continuous
 5. All logs can be found in Fuel dashboard (every node and every openstack service log)
-  Log files are also stored in fuel node. They are collected through rsyslog 
-  Extremely useful when debugging
+  - Log files are also stored in fuel node. They are collected through rsyslog 
+  - Extremely useful when debugging
 6. Fuel has its own health check which can be run from the dashboard
 7. Supports JH reboot
 8. ssh-keys automatically setup with host names configured, easy to access: ssh node-1, ssh node-2 etc
@@ -55,8 +55,8 @@ This is actually using TripleO of Redhat to deploy VIM. Undercloud will be insta
 1. PXE and admin network are separate, meaning one additional NIC is required or VLAN segmentation has to be used. Not really a problem but requires switch config.
 2. ”Local” installation not as easy as in Apex. Supposedly it should work by changing the repository mirror address in Fuel dashboard to the IP address of the JH, but sometimes it does not work. Could be a network configuration problem.
 3. Functional test docker does not work out of the box. Iptables need some additional configurations of postrouting rule for docker subnet.
-  ( iptables -t nat -A POSTROUTING -s IP_ADDRESS -j MASQUERADE )
-  Might be easier to run functional test from a controller but Docker is not installed within controller.
+  - ( iptables -t nat -A POSTROUTING -s IP_ADDRESS -j MASQUERADE )
+  - Might be easier to run functional test from a controller but Docker is not installed within controller.
 4. JH runs on CentOS 7 while nodes run on Ubuntu
 5. Slower DHCP than Apex: vping test takes roughly 140s in Fuel; 80s in Apex. This information should be checked again?
   Most likely an ODL problem
@@ -80,6 +80,7 @@ This is actually using TripleO of Redhat to deploy VIM. Undercloud will be insta
 3. During the last month or so Apex has improved a lot, so in the future it might be the better choice
 4. It would be really interesting to see if Compass performs as well in our environment as in Huawei’s pod. It doesn’t seem to have the same ODL problem as Apex and Fuel have; vping only takes roughly 20 seconds to complete. The reason behind my fixation on vping is that several tempest testcases fail in Apex/Fuel because of ssh-timeout since it takes too long for VMs to get an IP.
 5. Unless you manage to get heavy support from Huawei I would recommend to stay away from Compass until they support multi-NIC better
+
 
 
 VietStack team
