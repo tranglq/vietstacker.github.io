@@ -19,7 +19,7 @@ author:
   last_name: Stack
 ---
 
-Apex
+</p> Apex </p>
 Pros
 This is actually using TripleO of Redhat to deploy VIM. Undercloud will be installed on a virtual machine running in Jump Host and then from that Jump Host (JH), tripleO will deploy overcloud.
 Same OS (CentOS 7) on JH and nodes
