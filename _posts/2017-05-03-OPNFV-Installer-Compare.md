@@ -24,8 +24,8 @@ author:
 This is actually using TripleO of Redhat to deploy VIM. Undercloud will be installed on a virtual machine running in Jump Host and then from that Jump Host (JH), tripleO will deploy overcloud.
 
 1. Same OS (CentOS 7) on JH and nodes
-2. RPMs are available from artifacts so no need to reinstall OS on JH. Actually, artifacts are the local copies of all the RPM packages.
-  * Useful e.g. when upgrading Apex version
+2. RPMs are available from artifacts so no need to reinstall OS on JH. Actually, artifacts are the local copies of all the RPM packages:
+    * Useful e.g. when upgrading Apex version
 3. Same interface for PXE boot and Openstack admin/MGMT network. Therefore we do not need two NICs for them or VLAN segmentation configured in switch.
 4. JH will forward the internet access through admin network, therefore there is no need of direct Internet access to the nodes.
 5. Functional test is running inside docker that is running on JH. There is no need of iptables modifications for docker running.
