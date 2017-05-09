@@ -41,18 +41,19 @@ https://blog.vietstack.vn/architecture-proposal-of-doctor-project/
 
 The below logs are an example:
 
-```
 1. Monitor log:
 
+```
 + echo '[./monitor.log]'
 [./monitor.log]
 + sed -e 's/^/ | /' ./monitor.log
  | 2017-05-08 13:50:39,710 monitor.py 72 INFO   doctor monitor detected at 1494251439.71
  | 2017-05-08 13:50:40,107 monitor.py 74 INFO   ping timeout, quit monitoring...
 + echo
-
+```
 2. Inspector log:
 
+```
 + echo '[./inspector.log]'
 [./inspector.log]
 + sed -e 's/^/ | /' ./inspector.log
@@ -66,10 +67,10 @@ The below logs are an example:
  | 2017-05-08 13:50:40,014 inspector.py 38 INFO   doctor mark vm(<Server: doctor_vm1>) error at 1494251440.01
  | 2017-05-08 13:50:40,105 inspector.py 91 INFO   doctor mark host(overcloud-novacompute-0.opnfvlf.org) down at 1494251440.11
  | 127.0.0.1 - - [08/May/2017 13:50:40] "POST /events HTTP/1.1" 200 -
-
+```
 
 3. Consumer log
-
+```
 + echo '[./consumer.log]'
 [./consumer.log]
 + sed -e 's/^/ | /' ./consumer.log
