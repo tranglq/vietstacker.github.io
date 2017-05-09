@@ -70,6 +70,7 @@ The below logs are an example:
 ```
 
 3. Consumer log
+
 ```
 + echo '[./consumer.log]'
 [./consumer.log]
