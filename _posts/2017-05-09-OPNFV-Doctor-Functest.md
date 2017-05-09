@@ -41,7 +41,7 @@ https://blog.vietstack.vn/architecture-proposal-of-doctor-project/
 
 The below logs are an example:
 
-#####
+```
 1. Monitor log:
 
 + echo '[./monitor.log]'
@@ -78,7 +78,7 @@ The below logs are an example:
  | 2017-05-08 13:50:40,251 consumer.py 27 INFO   **received data = {"severity": "moderate", "alarm_name": "doctor_alarm1", "current": "alarm", "alarm_id": "0d9f0bf9-5181-49ac-8378-c8b4c75148b3", "reason": "Event <id=fbbe236c-64a8-4f19-a183-caf3bdc90424,event_type=compute.instance.update> hits the query <query=[{\"field\": \"traits.state\", \"op\": \"eq\", \"type\": \"string\", \"value\": \"error\"}, {\"field\": \"traits.instance_id\", \"op\": \"eq\", \"type\": \"string\", \"value\": \"758366d5-35f7-452b-90dd-4b34730105a6\"}]>.", "reason_data": {"type": "event", "event": {"event_type": "compute.instance.update", "traits": [["state", 1, "error"], ["user_id", 1, "2c26564230914e9ea134de794e079c44"], ["service", 1, "compute"], ["disk_gb", 2, 1], ["instance_type", 1, "m1.tiny"], ["tenant_id", 1, "d498d0054fd049eab4263796a9d45a77"], ["root_gb", 2, 1], ["ephemeral_gb", 2, 0], ["instance_type_id", 2, 10], ["vcpus", 2, 1], ["memory_mb", 2, 512], ["instance_id", 1, "758366d5-35f7-452b-90dd-4b34730105a6"], ["host", 1, "overcloud-controller-1.opnfvlf.org"], ["request_id", 1, "req-ee44b7ee-1e22-40a1-897b-017f194278e1"], ["project_id", 1, "d498d0054fd049eab4263796a9d45a77"], ["launched_at", 4, "2017-05-08T13:49:07"]], "message_signature": "a192c5c331e8ce4d8bd2da1ef3612a5cc47170a243b5dc5c14c33335ca127ec1", "raw": {}, "generated": "2017-05-08T13:50:39.991812", "message_id": "fbbe236c-64a8-4f19-a183-caf3bdc90424"}}, "previous": "insufficient data"}**
  | 127.0.0.1 - - [08/May/2017 13:50:40] "POST /failure HTTP/1.1" 200 -
 + echo
-
+```
 
 So, when we understand the abstraction of Doctor as well as the above example output, now the remaining tasks is designing/choosing the right candidates for each of components. If you have your own ideas, just implement it:). If not, check this link again as reference:
 
