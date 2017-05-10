@@ -41,7 +41,7 @@ https://blog.vietstack.vn/architecture-proposal-of-doctor-project/
 
 The below logs are an example:
 
-##### Monitor log:
+#### Monitor log:
 
 ```
 + echo '[./monitor.log]'
@@ -51,7 +51,7 @@ The below logs are an example:
  | 2017-05-08 13:50:40,107 monitor.py 74 INFO   ping timeout, quit monitoring...
 + echo
 ```
-##### Inspector log:
+#### Inspector log:
 
 ```
 + echo '[./inspector.log]'
@@ -69,7 +69,7 @@ The below logs are an example:
  | 127.0.0.1 - - [08/May/2017 13:50:40] "POST /events HTTP/1.1" 200 -
 ```
 
-##### Consumer log
+#### Consumer log
 
 ```
 + echo '[./consumer.log]'
