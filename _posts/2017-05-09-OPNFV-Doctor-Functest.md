@@ -43,13 +43,14 @@ The below logs are an example:
 
 #### Monitor log:
 
-
+```
 + echo '[./monitor.log]'
 [./monitor.log]
 + sed -e 's/^/ | /' ./monitor.log
  | 2017-05-08 13:50:39,710 monitor.py 72 INFO   doctor monitor detected at 1494251439.71
  | 2017-05-08 13:50:40,107 monitor.py 74 INFO   ping timeout, quit monitoring...
 + echo
+```
 
 #### Inspector log:
 
