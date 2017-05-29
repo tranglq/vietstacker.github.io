@@ -178,7 +178,9 @@ After all the Bare Metal services have been properly configured, you should enro
 - Specify a deploy kernel and ramdisk which correspond to the BM&#39;s driver
 
 > $ export DEPLOY\_KERNEL=$(glance image-list | grep ir-deploy-pxe\_irmc.kernel | awk &#39;{ print $2 }&#39;)
+
 > $ export DEPLOY\_RAMDISK=$(glance image-list | grep ir-deploy-pxe\_irmc.initramfs | awk &#39;{ print $2 }&#39;)
+
 > $ ironic node-update bm add driver\_info/deploy\_ramdisk=$DEPLOY\_RAMDISK driver\_info/deploy\_kernel=$DEPLOY\_KERNEL
 
 ![ironic node-update](../pictures/ironic_update2.png)
