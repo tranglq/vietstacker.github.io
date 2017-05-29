@@ -15,7 +15,7 @@ The requirement for tutorial include two computer:
 - OpenStack Computer: Ubuntu and OpenStack with enable Ironic service
 - Bare Mental Computer (BM): Server support IPMI Tool such as Fujitsu TX2540 M1 Server.
 
-## 1. Configuring and enabling pxe\_irmc driver of Fujitsu PRIMERGY Server
+## 2. Configuring and enabling pxe\_irmc driver of Fujitsu PRIMERGY Server
 
 The Bare Metal service is a collection of components that provides support to manage and provision physical machines [3]. Also known as the ironic project, The Bare Metal service includes the following components: ironic-api, ironic-conductor, ironic-python-agent [4]. We will Deploy Ironic with DevStack. DevStack may be configured to deploy Ironic, setup Nova to use the Ironic driver and provide hardware resources (network, bare metal compute nodes) using a combination of OpenVSwitch and libvirt. It is highly recommended to deploy on an expendable virtual machine and not on your personal work station. Deploying Ironic with DevStack requires a machine running Ubuntu 16.04 (or later) or Fedora 24 (or later). Make sure your machine is fully up to date and has the latest packages installed before beginning this process [5]. We recommend Bare Metal service installation guide [6] for more detail working setup Ironic.
 
@@ -148,7 +148,7 @@ pxe_append_params = nofb nomodeset vga=normal console=tty0 console=ttyS0,9600n8
 
 ```
 
-## 2. Enroll Fujitsu PRIMERGY Server in Bare Metal service
+## 3. Enroll Fujitsu PRIMERGY Server in Bare Metal service
 
 After all the Bare Metal services have been properly configured, you should enroll your hardware with the Bare Metal service, and confirm that the Compute service sees the available hardware. The nodes will be visible to the Compute service once they are in the available provision state [7].  This section describes the main steps to enroll a node and make it available for provisioning. Some steps are shown separately for illustration purposes, and may be combined if desired.
 
@@ -192,7 +192,7 @@ $ ironic node-update $NODE\_UUID add properties/capabilities=&#39;boot\_mode:bio
 ![ironic](../pictures/ironic_node-show.png)
 
 
-## 3. Port groups configuration in the Bare Metal service
+## 4. Port groups configuration in the Bare Metal service
 
 You can look at Port groups support [8] for more detail how to setup configuration of port groups (bonds) in the BM. Port group configuration is supported in ironic API microversions 1.26. You can update  ironic API microversions by install newest version of python-ironicclient [10].  The CLI commands a tutorial for setup port group support on Fujitsu server:
 
@@ -214,7 +214,7 @@ You can look at Port groups support [8] for more detail how to setup configurati
 
 ![ironic portgroup create](../pictures/boot-instance.png)
 
-## 4. Create Ubuntu Images supports bonding.
+## 5. Create Ubuntu Images supports bonding.
 
 There are several tools that are designed to automate image creation. We used Diskimage-builder [9], which is an automated disk image creation tool that supports a variety of distributions and architectures. Diskimage-builder (DIB) can build images for Fedora, Red Hat Enterprise Linux, Ubuntu, Debian, CentOS, and openSUSE, to create Ubuntu image for provisioning on BM. This is script we used to create Ubuntu image:
 
@@ -225,7 +225,7 @@ There are several tools that are designed to automate image creation. We used Di
 >$ export DIB\_CLOUD\_INIT\_DATASOURCES=&quot;ConfigDrive, OpenStack&quot;
 >$ disk-image-create ubuntu vm devuser cloud-init-datasources -o $IMAGE\_NAME
 
-## 5. References
+## 6. References
 
 [1] [https://docs.openstack.org/user-guide/cli-config-drive.html](https://docs.openstack.org/user-guide/cli-config-drive.html)
 [2] [https://www.kernel.org/doc/Documentation/networking/bonding.txt](https://www.kernel.org/doc/Documentation/networking/bonding.txt)
