@@ -169,9 +169,9 @@ After all the Bare Metal services have been properly configured, you should enro
 ![nova flavor](../pictures/nova_flavor.png)
 
 
-$ ironic node-update bm add properties/memory\_mb=&#39;32768&#39; properties/cpu\_arch=&#39;x86\_64&#39; properties/local\_gb=$MEMMORY properties/cpus=&#39;8&#39;
+>$ ironic node-update bm add properties/memory\_mb=&#39;32768&#39; properties/cpu\_arch=&#39;x86\_64&#39; properties/local\_gb=$MEMMORY properties/cpus=&#39;8&#39;
 
-$ ironic node-update $NODE\_UUID add properties/capabilities=&#39;boot\_mode:bios&#39;
+>$ ironic node-update $NODE\_UUID add properties/capabilities=&#39;boot\_mode:bios&#39;
 
 ![ironic node-update](../pictures/ironic_update3.png)
 
@@ -186,8 +186,11 @@ $ ironic node-update $NODE\_UUID add properties/capabilities=&#39;boot\_mode:bio
 - Validate BM
 
 >$ ironic node-validate bm
+
 >$ ironic node-list
+
 >$ ironic node-show bm
+
 
 ![ironic](../pictures/ironic_node-show.png)
 
@@ -205,8 +208,11 @@ You can look at Port groups support [8] for more detail how to setup configurati
 - Associate ports with the created port group
 
 >$ export PORT\_GROUP\_UUID=$(openstack --os-baremetal-api-version latest baremetal port group list | grep test | awk &#39; {print $2}&#39;)
+
 >$ openstack --os-baremetal-api-version latest baremetal port create --node bm --port-group $PORT\_GROUP\_UUID 90:1b:0e:0f:ff:60
+
 >$ openstack --os-baremetal-api-version latest baremetal port create --node bm --port-group  $PORT\_GROUP\_UUID 90:1b:0e:10:00:4d
+
 
 ![ironic portgroup create](../pictures/associate-ironic-pg.png)
 
@@ -219,21 +225,36 @@ You can look at Port groups support [8] for more detail how to setup configurati
 There are several tools that are designed to automate image creation. We used Diskimage-builder [9], which is an automated disk image creation tool that supports a variety of distributions and architectures. Diskimage-builder (DIB) can build images for Fedora, Red Hat Enterprise Linux, Ubuntu, Debian, CentOS, and openSUSE, to create Ubuntu image for provisioning on BM. This is script we used to create Ubuntu image:
 
 >$ export IMAGE\_NAME=ubuntu-cloud-image
+
 >$ export DIB\_DEV\_USER\_USERNAME=devuser
+
 >$ export DIB\_DEV\_USER\_PASSWORD=abc123
+
 >$ export DIB\_DEV\_USER\_PWDLESS\_SUDO=Yes
+
 >$ export DIB\_CLOUD\_INIT\_DATASOURCES=&quot;ConfigDrive, OpenStack&quot;
+
 >$ disk-image-create ubuntu vm devuser cloud-init-datasources -o $IMAGE\_NAME
+
 
 ## 6. References
 
 [1] [https://docs.openstack.org/user-guide/cli-config-drive.html](https://docs.openstack.org/user-guide/cli-config-drive.html)
+
 [2] [https://www.kernel.org/doc/Documentation/networking/bonding.txt](https://www.kernel.org/doc/Documentation/networking/bonding.txt)
+
 [3] [https://docs.openstack.org/project-install-guide/baremetal/ocata/](https://docs.openstack.org/project-install-guide/baremetal/ocata/)
+
 [4] [https://docs.openstack.org/project-install-guide/baremetal/ocata/get_started.html](https://docs.openstack.org/project-install-guide/baremetal/ocata/get-started.html)
+
 [5] [https://docs.openstack.org/developer/ironic/dev/dev-quickstart.html](https://docs.openstack.org/developer/ironic/dev/dev-quickstart.html)
+
 [6] [https://docs.openstack.org/project-install-guide/baremetal/ocata/](https://docs.openstack.org/project-install-guide/baremetal/ocata/)
+
 [7] [https://docs.openstack.org/project-install-guide/baremetal/ocata/enrollment.html](https://docs.openstack.org/project-install-guide/baremetal/ocata/enrollment.html)
+
 [8] [https://docs.openstack.org/developer/ironic/ocata/deploy/portgroups.html](https://docs.openstack.org/developer/ironic/ocata/deploy/portgroups.html)
+
 [9] [https://docs.openstack.org/image-guide/create-images-automatically.html#diskimage-builder](https://docs.openstack.org/image-guide/create-images-automatically.html#diskimage-builder)
+
 [10] [https://pypi.python.org/pypi/python-ironicclient](https://pypi.python.org/pypi/python-ironicclient)
