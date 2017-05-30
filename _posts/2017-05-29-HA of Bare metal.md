@@ -6,21 +6,21 @@ type: post
 published: true
 status: publish
 categories:
- - Tutorial
- - News
+- Tutorial
+- News
 tags:
- - ironic
- - portgroup
- - openstack
- - bare metal
+- ironic
+- portgroup
+- openstack
+- bare metal
 meta:
- - _publicize_pending: '1'
+- _publicize_pending: '1'
 author:
-	login: 
-	email: tuanla@vn.fujitsu.com
-	display_name: Tuan
-	first_name: Tuan
-	last_name: Luong-Anh
+  login: 
+  email: tuanla@vn.fujitsu.com
+  display_name: Tuan
+  first_name: Tuan
+  last_name: Luong-Anh
 ---
 # High availability of Bare Metal: Link Aggressive support in Linux with Fujitsu Server
 
