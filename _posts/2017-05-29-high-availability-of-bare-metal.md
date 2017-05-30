@@ -20,17 +20,16 @@ author:
   login: Tuan
   email: tuanla@vn.fujitsu.com
   display_name: tuanla
-  first_name: ''
-  last_name: ''
+  first_name: Tuan
+  last_name: Luong-Anh
 ---
-
 # High availability of Bare Metal: Link Aggressive support in Linux with Fujitsu Server
 
 ## 1. Introduction ironic port groups support
 
 The Bare Metal Service (ironic) [3] supports static configuration of **port groups** (PG) will allow user to increase performance or provide higher reliability of network connection. PG called as bonds in Linux or NIC Teaming in Windows. Nova is using configdrive [1] to utilize NIC aggregation when instance is spawned on hardware server. For Linux bare metal computer (BM), see kernel documentation on bonding [2] for more detail and how it is setup in Linux.
 
-This tutorial will show how to create bare metal computer (BM) with port groups support follow the network prototype here:
+This tutorial will show how to create bare metal computer (BM) with port groups support following the network prototype here:
 
 ![Network prototype of Bare Metal Provisioning.](../pictures/provision.png)
 
@@ -45,17 +44,20 @@ Requirements for bare Metal provisioning tutorial:
 
 The Bare Metal service is a collection of components that provides support to manage and provision physical machines [3]. Also known as the ironic project, The Bare Metal service includes the following components: ironic-api, ironic-conductor, ironic-python-agent [4]. We will Deploy Ironic with DevStack. DevStack may be configured to deploy Ironic, setup Nova to use the Ironic driver and provide hardware resources (network, bare metal compute nodes) using a combination of OpenVSwitch and libvirt. It is highly recommended to deploy on an expendable virtual machine and not on your personal work station. Deploying Ironic with DevStack requires a machine running Ubuntu 16.04 (or later) or Fedora 24 (or later). Make sure your machine is fully up to date and has the latest packages installed before beginning this process [5]. We recommend Bare Metal service installation guide [6] for more detail working setup Ironic.
 
-Devstack will no longer create the user &#39;stack&#39; with the desired permissions, but does provide a script to perform the task:
+Devstack will no longer create the user &#39;stack&#39; with the desired permissions, but provides a script to perform the task:
 
-`$ git clone https://git.openstack.org/openstack-dev/devstack.git devstack`
-`$ sudo ./devstack/tools/create-stack-user.sh`
-
+```bash
+$ git clone https://git.openstack.org/openstack-dev/devstack.git devstack
+$ sudo ./devstack/tools/create-stack-user.sh
+```
 Switch to the stack user:
 
-`$ sudo su - stack`
+```bash
+$ sudo su - stack
+```
 
 Create devstack/local.conf with minimal settings required to enable Ironic. An example local.conf that enables both deploy in Fujitsu hardware and uses the pxe\_irmc driver by default:
-```
+```init
 [[local|localrc]]
 
 SERVICE_TOKEN=fujitsu
@@ -177,41 +179,48 @@ After all the Bare Metal services have been properly configured, you should enro
 
 - Create a bare metal computer (BM) in the Bare Metal service
 
-`$ ironic node-create -d pxe\_irmc -n bm`
+```bash
+ironic node-create -d pxe_irmc -n bm
+```
 
 ![IronicAPI create node for Bare Metal Provisioning.](../pictures/ironic_create.png)
 
 - Update the node driver\_info so that Bare Metal service can manage the BM
 
-`$ ironic node-update bm add driver\_info/ipmi\_username=$IRMC\_USERNAME driver\_info/ipmi\_password=$IRMC\_PASSWORD driver\_info/ipmi\_address=$IRMC\_IP driver\_info/irmc\_username=$IRMC\_USERNAME driver\_info/irmc\_password=$IRMC\_PASSWORD driver\_info/irmc\_address=10.0.0.10 driver\_info/ipmi\_terminal\_port=10000`
-
+```bash
+ironic node-create -d pxe_irmc -n bm
+```
 - Update the BM&#39;s properties to match the bare metal flavor
 
-`$ nova flavor-list`
-
+```bash
+ironic node-update bm add driver_info/ipmi_username=$IRMC_USERNAME driver_info/ipmi_password=$IRMC_PASSWORD driver_info/ipmi_address=$IRMC_IP driver_info/irmc_username=$IRMC_USERNAME driver_info/irmc_password=$IRMC_PASSWORD driver_info/irmc_address=$IRMC_IP driver_info/ipmi_terminal_port=10000
+```
 ![nova flavor](../pictures/nova_flavor.png)
 
-
-`$ ironic node-update bm add properties/memory\_mb=&#39;32768&#39; properties/cpu\_arch=&#39;x86\_64&#39; properties/local\_gb=$MEMMORY properties/cpus=&#39;8&#39;`
-
-`$ ironic node-update $NODE\_UUID add properties/capabilities=&#39;boot\_mode:bios&#39;`
+```bash
+$ nova flavor-list
+$ ironic node-update bm add properties/memory_mb='32768' properties/cpu_arch='x86_64' properties/local_gb=$MEMMORY properties/cpus='8'
+$ ironic node-update $NODE_UUID add properties/capabilities='boot_mode:bios'
+```
 
 ![ironic node-update](../pictures/ironic_update3.png)
 
 - Specify a deploy kernel and ramdisk which correspond to the BM&#39;s driver
 
-`$ export DEPLOY\_KERNEL=$(glance image-list | grep ir-deploy-pxe\_irmc.kernel | awk &#39;{ print $2 }&#39;)`
-`$ export DEPLOY\_RAMDISK=$(glance image-list | grep ir-deploy-pxe\_irmc.initramfs | awk &#39;{ print $2 }&#39;)`
-`$ ironic node-update bm add driver\_info/deploy\_ramdisk=$DEPLOY\_RAMDISK driver\_info/deploy\_kernel=$DEPLOY\_KERNEL`
-
+```bash
+$ export DEPLOY_KERNEL=$(glance image-list | grep ir-deploy-pxe_irmc.kernel | awk '{ print $2 }')
+$ export DEPLOY_RAMDISK=$(glance image-list | grep ir-deploy-pxe_irmc.initramfs | awk '{ print $2 }')
+$ ironic node-update bm add driver_info/deploy_ramdisk=$DEPLOY_RAMDISK driver_info/deploy_kernel=$DEPLOY_KERNEL
+```
 ![ironic node-update](../pictures/ironic_update2.png)
 
 - Validate BM
 
-`$ ironic node-validate bm`
-`$ ironic node-list`
-`$ ironic node-show bm`
-
+```bash
+$ ironic node-validate bm
+$ ironic node-list
+$ ironic node-show bm 
+```
 ![ironic](../pictures/ironic_node-show.png)
 
 ## 4. Port groups configuration in the Bare Metal service
@@ -220,16 +229,18 @@ You can look at Port groups support [8] for more detail how to setup configurati
 
 - Creating a port group
 
-`$ openstack --os-baremetal-api-version latest baremetal port group create --address   90:1b:0e:0f:ff:60 --node bm --name test --mode active-backup --property miimon=100 --property xmit\_hash\_policy=&quot;layer2&quot; --support-standalone-ports`
-
+```bash
+$ openstack --os-baremetal-api-version latest baremetal port group create --address   90:1b:0e:0f:ff:60 --node bm --name test --mode active-backup --property miimon=100 --property xmit_hash_policy="layer2" --support-standalone-ports
+```
 ![ironic portgroup create](../pictures/create-ironic-pg.png)
 
 - Associate ports with the created port group
 
-`$ export PORT\_GROUP\_UUID=$(openstack --os-baremetal-api-version latest baremetal port group list | grep test | awk &#39; {print $2}&#39;)`
-`$ openstack --os-baremetal-api-version latest baremetal port create --node bm --port-group $PORT\_GROUP\_UUID 90:1b:0e:0f:ff:60`
-`$ openstack --os-baremetal-api-version latest baremetal port create --node bm --port-group  $PORT\_GROUP\_UUID 90:1b:0e:10:00:4d`
-
+```bash
+$ export PORT_GROUP_UUID=$(openstack --os-baremetal-api-version latest baremetal port group list | grep test | awk ' {print $2}')
+$ openstack --os-baremetal-api-version latest baremetal port create --node bm --port-group $PORT_GROUP_UUID 90:1b:0e:0f:ff:60 
+$ openstack --os-baremetal-api-version latest baremetal port create --node bm --port-group  $PORT_GROUP_UUID 90:1b:0e:10:00:4d
+```
 
 ![ironic portgroup create](../pictures/associate-ironic-pg.png)
 
@@ -241,15 +252,14 @@ You can look at Port groups support [8] for more detail how to setup configurati
 
 There are several tools that are designed to automate image creation. We used Diskimage-builder [9], which is an automated disk image creation tool that supports a variety of distributions and architectures. Diskimage-builder (DIB) can build images for Fedora, Red Hat Enterprise Linux, Ubuntu, Debian, CentOS, and openSUSE, to create Ubuntu image for provisioning on BM. This is script we used to create Ubuntu image:
 
+```bash
+$ export IMAGE_NAME=ubuntu-cloud-image
+$ export DIB_DEV_USER_USERNAME=devuser
+$ export DIB_DEV_USER_PASSWORD=abc123
+$ export DIB_DEV_USER_PWDLESS_SUDO=Yes
+$ export DIB_CLOUD_INIT_DATASOURCES="ConfigDrive, Openstack"
+$ disk-image-create ubuntu vm devuser cloud-init-datasources -o $IMAGE_NAME
 ```
-$ export IMAGE\_NAME=ubuntu-cloud-image
-$ export DIB\_DEV\_USER\_USERNAME=devuser
-$ export DIB\_DEV\_USER\_PASSWORD=abc123
-$ export DIB\_DEV\_USER\_PWDLESS\_SUDO=Yes
-$ export DIB\_CLOUD\_INIT\_DATASOURCES=&quot;ConfigDrive, OpenStack&quot;
-$ disk-image-create ubuntu vm devuser cloud-init-datasources -o $IMAGE\_NAME
-```
-
 ## 6. References
 
 [1] [https://docs.openstack.org/user-guide/cli-config-drive.html](https://docs.openstack.org/user-guide/cli-config-drive.html)
