@@ -1,3 +1,27 @@
+---
+layout: post
+title: High availability of Bare Metal: Link Aggressive support in Linux with Fujitsu Server
+date: 30-5-2017
+type: post
+published: true
+status: publish
+categories:
+ - Tutorial
+ - News
+tags:
+ - ironic
+ - portgroup
+ - openstack
+ - bare metal
+meta:
+ - _publicize_pending: '1'
+author:
+	login: 
+	email: tuanla@vn.fujitsu.com
+	display_name: Tuan
+	first_name: Tuan
+	last_name: Luong-Anh
+---
 # High availability of Bare Metal: Link Aggressive support in Linux with Fujitsu Server
 
 ## 1. Introduction ironic port groups support
