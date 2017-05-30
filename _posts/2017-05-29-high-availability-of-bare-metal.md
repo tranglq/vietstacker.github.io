@@ -57,7 +57,7 @@ $ sudo su - stack
 ```
 
 Create devstack/local.conf with minimal settings required to enable Ironic. An example local.conf that enables both deploy in Fujitsu hardware and uses the pxe\_irmc driver by default:
-```init
+```ini
 [[local|localrc]]
 
 SERVICE_TOKEN=fujitsu
