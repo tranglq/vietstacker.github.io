@@ -70,21 +70,15 @@ Suppose that, we have a mapping from the queues like below as an example:
 
 mapping = 
 { "Compute1" :{
-      
       “VM1”: “DOWN”,
-      
-      “VM2”: “MAINTENANCE”
-      
+      “VM2”: “MAINTENANCE
       },
    
-      "Compute2":  {...},
+   "Compute2":  {...},
    
-      "Compute3":  {....}
-   
+   "Compute3":  {....}
       .
-   
       .
-   
       .
 }
 
@@ -102,6 +96,7 @@ In this example, I will show you two types of implementation. The first version 
 I will put the whole logic of creating the result of queue output as a mapping and the logic to get the value of state per vm (as shown above) within one service. In this case, each policy of vm will have one queue which is used for storing the vm state based on policy.
 
 - Main logic:
+
 
 ```python
 
@@ -160,6 +155,7 @@ class RoundRobin():
 ```
 
 - Test:
+
 
 ```python
 
@@ -260,6 +256,7 @@ class TestRoundRobin(TestCase):
 I will separate into two service, one to put events into queue and create a mapping, another is getting that mapping through communication channel like RestAPI, AMQP, etc. , put its items into roundrobin logics and then pulling out events to do next actions . I do not care about how  gets the mapping, what I care for is my service which is now putting the items of that mapping into roundrobin logic to ensure that the main logic will get events with a roundrobin-like behavior.
 
 - Main logic
+
 ```python
 from itertools import cycle, islice
 import time
@@ -376,6 +373,7 @@ class RoundRobinService():
 ```
 
 - Test
+
 ```python
 
 from unittest import TestCase
@@ -441,7 +439,6 @@ class TestRoundRobin(TestCase):
     def test_run(self):
         self.f_service.run(map, limit=10)
         self.assertEqual(0, self.f_service.job_queue.qsize())
-
 ```
 
 #### NOTE:
