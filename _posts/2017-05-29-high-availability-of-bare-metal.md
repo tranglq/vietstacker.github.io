@@ -188,18 +188,21 @@ ironic node-create -d pxe_irmc -n bm
 - Update the node driver\_info so that Bare Metal service can manage the BM
 
 ```bash
-ironic node-create -d pxe_irmc -n bm
+$ ironic node-create -d pxe_irmc -n bm
 ```
 - Update the BM&#39;s properties to match the bare metal flavor
 
 ```bash
-ironic node-update bm add driver_info/ipmi_username=$IRMC_USERNAME driver_info/ipmi_password=$IRMC_PASSWORD driver_info/ipmi_address=$IRMC_IP driver_info/irmc_username=$IRMC_USERNAME driver_info/irmc_password=$IRMC_PASSWORD driver_info/irmc_address=$IRMC_IP driver_info/ipmi_terminal_port=10000
+$ ironic node-update bm add driver_info/ipmi_username=$IRMC_USERNAME driver_info/ipmi_password=$IRMC_PASSWORD  \                           driver_info/ipmi_address=$IRMC_IP driver_info/irmc_username=$IRMC_USERNAME \
+  driver_info/irmc_password=$IRMC_PASSWORD driver_info/irmc_address=$IRMC_IP \  
+  driver_info/ipmi_terminal_port=10000
 ```
 ![nova flavor](../pictures/nova_flavor.png)
 
 ```bash
 $ nova flavor-list
-$ ironic node-update bm add properties/memory_mb='32768' properties/cpu_arch='x86_64' properties/local_gb=$MEMMORY properties/cpus='8'
+$ ironic node-update bm add properties/memory_mb='32768' properties/cpu_arch='x86_64' \
+  properties/local_gb=$MEMMORY properties/cpus='8'
 $ ironic node-update $NODE_UUID add properties/capabilities='boot_mode:bios'
 ```
 
@@ -230,16 +233,22 @@ You can look at Port groups support [8] for more detail how to setup configurati
 - Creating a port group
 
 ```bash
-$ openstack --os-baremetal-api-version latest baremetal port group create --address   90:1b:0e:0f:ff:60 --node bm --name test --mode active-backup --property miimon=100 --property xmit_hash_policy="layer2" --support-standalone-ports
+$ openstack --os-baremetal-api-version latest baremetal port group create \
+  --address 90:1b:0e:0f:ff:60 --node bm --name test --mode active-backup  \
+  --property miimon=100 --property xmit_hash_policy="layer2"              \
+  --support-standalone-ports
 ```
 ![ironic portgroup create](../pictures/create-ironic-pg.png)
 
 - Associate ports with the created port group
 
 ```bash
-$ export PORT_GROUP_UUID=$(openstack --os-baremetal-api-version latest baremetal port group list | grep test | awk ' {print $2}')
-$ openstack --os-baremetal-api-version latest baremetal port create --node bm --port-group $PORT_GROUP_UUID 90:1b:0e:0f:ff:60 
-$ openstack --os-baremetal-api-version latest baremetal port create --node bm --port-group  $PORT_GROUP_UUID 90:1b:0e:10:00:4d
+$ export PORT_GROUP_UUID=$(openstack --os-baremetal-api-version latest baremetal port group \
+  list | grep test | awk ' {print $2}')
+$ openstack --os-baremetal-api-version latest baremetal port create --node bm --port-group \
+  $PORT_GROUP_UUID 90:1b:0e:0f:ff:60 
+$ openstack --os-baremetal-api-version latest baremetal port create --node bm --port-group  \
+  $PORT_GROUP_UUID 90:1b:0e:10:00:4d
 ```
 
 ![ironic portgroup create](../pictures/associate-ironic-pg.png)
@@ -248,7 +257,7 @@ $ openstack --os-baremetal-api-version latest baremetal port create --node bm --
 
 ![ironic portgroup create](../pictures/boot-instance.png)
 
-## 5. Create Ubuntu Images supports bonding.
+## 5. Create Ubuntu images supports bonding.
 
 There are several tools that are designed to automate image creation. We used Diskimage-builder [9], which is an automated disk image creation tool that supports a variety of distributions and architectures. Diskimage-builder (DIB) can build images for Fedora, Red Hat Enterprise Linux, Ubuntu, Debian, CentOS, and openSUSE, to create Ubuntu image for provisioning on BM. This is script we used to create Ubuntu image:
 
