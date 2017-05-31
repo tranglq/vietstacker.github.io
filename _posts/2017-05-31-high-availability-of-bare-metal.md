@@ -1,7 +1,7 @@
 ---
 layout: post
 title: High availability of Bare Metal: Link Aggressive support in Linux with Fujitsu Server
-date: 2017-05-30 17:41:37.000000000 +07:00
+date: 2017-05-30
 type: post
 published: true
 status: publish
