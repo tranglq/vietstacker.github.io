@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/vietstacker/vietstacker.github.io.svg?branch=master)](https://travis-ci.org/vietstacker/vietstacker.github.io)
+
 # VietStack Technical Blog - Based on Will Jekyll Template - [Demo](http://willianjusten.com.br/will-jekyll-template)
 
 ## Basic Setup
