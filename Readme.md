@@ -1,4 +1,4 @@
-## VietStack Technical Blog - Based on Will Jekyll Template - [Demo](http://willianjusten.com.br/will-jekyll-template)
+# VietStack Technical Blog - Based on Will Jekyll Template - [Demo](http://willianjusten.com.br/will-jekyll-template)
 
 ## Basic Setup
 
