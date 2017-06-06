@@ -106,6 +106,7 @@ Vậy câu chuyện là khi người vận hành muốn bảo trì một node no
 Trong bài tiếp theo, tôi sẽ tiếp tục phân tích về các tính chất còn lại của tám tính chất [1] trong Rolling upgrade.
 
 Thân ái, hẹn gặp lại!
+
 Nguyễn Hoài Nam
 
 [1] https://specs.openstack.org/openstack/openstack-user-stories/user-stories/proposed/rolling-upgrades.html#gaps
