@@ -41,9 +41,9 @@ author:
 
 **1.Verizon**
  
-- Một sản phẩm nổi trội của Verizon chính là VNS (virtual network services). Họ muốn hướng tới một mô hình gọi là: Masively Distributed OpenStack, nó kha khá tương đồng với Edge computing.
+* Một sản phẩm nổi trội của Verizon chính là VNS (virtual network services). Họ muốn hướng tới một mô hình gọi là: Masively Distributed OpenStack, nó kha khá tương đồng với Edge computing.
  
-- Hiện tại trong mô hình triển khai VNF của Verizon:
+* Hiện tại trong mô hình triển khai VNF của Verizon:
 	* Orchestrator quản lý toàn bộ VNFs
 	* Resource orchestrator: Họ dùng giải pháp của EEricsson (cái này hồi trc thì là thế, hiện tại cần kiểm chứng)
 	* Service orchestrator: Giải pháp riêng của Verizon, chính là cái VNS phía trên.
@@ -51,7 +51,7 @@ author:
  
 **2.AT&T**
  
-- AT&T đóng góp khá nhiều cho cộng đồng OpenStack trong mảng container (OpenStack Helm, )
+*AT&T đóng góp khá nhiều cho cộng đồng OpenStack trong mảng container (OpenStack Helm, )
  
 - Xác định kỷ nguyên tiếp theo là của Edge Computing. Đây cũng chính là mảnh đất màu mỡ cho OpenStack.
  
