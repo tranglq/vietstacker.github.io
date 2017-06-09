@@ -66,7 +66,6 @@ author:
  
 - AT&T cũng đang có xu hướng sẽ sử dụng Magnum trong thờ gian tới
  
- 
 **3. Redhat**
  
 - Redhat đặc biệt quan tâm đến các giải pháp cloud liên quan đến Telco trong thời gian gần đây, một trong số đó là giải pháp về multi-sites để đáp ứng các yêu cầu trong telco. Redhat đưa ra một số use case như sau: 
@@ -84,7 +83,6 @@ author:
 	* OPNFV Multisite project: - Cung cấp  VNF high availability giữa các multi-region OpenStack clouds. Kingbird là một project liên quan đên vấn đề này
  
 	* Tricircle: Cái này các bạn có thể check trên Internet nhé :)
- 
  
 **4. T-Mobile**
  
