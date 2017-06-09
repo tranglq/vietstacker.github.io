@@ -1,12 +1,11 @@
 ---
 layout: post
-title: OPNFV-Doctor-Functest
-date: 2017-05-09
+title: Boston_UseCase_Sumup
+date: 2017-06-09
 type: post
 published: true
 status: publish
 categories:
-- Chia sẻ kinh nghiệm
 - Tech
 meta:
   _wpcom_is_markdown: '1'
@@ -46,10 +45,10 @@ author:
 - Một sản phẩm nổi trội của Verizon chính là VNS (virtual network services). Họ muốn hướng tới một mô hình gọi là: Masively Distributed OpenStack, nó kha khá tương đồng với Edge computing.
 
 - Hiện tại trong mô hình triển khai VNF của Verizon:
-	Orchestrator quản lý toàn bộ VNFs
-	Resource orchestrator: Họ dùng giải pháp của EEricsson (cái này hồi trc thì là thế, hiện tại cần kiểm chứng)
-	Service orchestrator: Giải pháp riêng của Verizon, chính là cái VNS phía trên.
-	Multi-layer control: Họ đang hướng tới Tricircle
+	* Orchestrator quản lý toàn bộ VNFs
+	* Resource orchestrator: Họ dùng giải pháp của EEricsson (cái này hồi trc thì là thế, hiện tại cần kiểm chứng)
+	* Service orchestrator: Giải pháp riêng của Verizon, chính là cái VNS phía trên.
+	* Multi-layer control: Họ đang hướng tới Tricircle
 
 2. AT&T
 
@@ -60,11 +59,11 @@ author:
 - Các use cases rõ rệt cho Edge Computing chính là IoT, AR/VR, cloud RAN, vCPE...
 
 - AT&T đang có kế hoạch sẽ sử dụng kubernetes để chạy các dịch vụ OpenStack với sự trông đợi như dưới đây: 
-	Cung cấp một tool thuận tiện cho việc triển khai OpenStack.
-	Overhead sẽ giảm dưới góc độ quản lý
-	Modular scaling
-	Hỗ trợ resiliency và scale trên diện rộng
-	Hitless/in-place upgrade
+	* Cung cấp một tool thuận tiện cho việc triển khai OpenStack.
+	* Overhead sẽ giảm dưới góc độ quản lý
+	* Modular scaling
+	* Hỗ trợ resiliency và scale trên diện rộng
+	* Hitless/in-place upgrade
 
 - AT&T cũng đang có xu hướng sẽ sử dụng Magnum trong thờ gian tới
 
