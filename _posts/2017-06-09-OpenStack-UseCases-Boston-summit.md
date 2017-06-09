@@ -40,7 +40,7 @@ author:
 #### Use cases
 
 
-1. Verizon
+##### Verizon
 
 - Một sản phẩm nổi trội của Verizon chính là VNS (virtual network services). Họ muốn hướng tới một mô hình gọi là: Masively Distributed OpenStack, nó kha khá tương đồng với Edge computing.
 
@@ -50,7 +50,7 @@ author:
 	* Service orchestrator: Giải pháp riêng của Verizon, chính là cái VNS phía trên.
 	* Multi-layer control: Họ đang hướng tới Tricircle
 
-2. AT&T
+##### AT&T
 
 - AT&T đóng góp khá nhiều cho cộng đồng OpenStack trong mảng container (OpenStack Helm, )
 
@@ -68,7 +68,7 @@ author:
 - AT&T cũng đang có xu hướng sẽ sử dụng Magnum trong thờ gian tới
 
 
-3. Redhat:
+##### Redhat:
 
 - Redhat đặc biệt quan tâm đến các giải pháp cloud liên quan đến Telco trong thời gian gần đây, một trong số đó là giải pháp về multi-sites để đáp ứng các yêu cầu trong telco. Redhat đưa ra một số use case như sau: 
 
@@ -89,24 +89,25 @@ author:
 	* Tricircle: Cái này các bạn có thể check trên Internet nhé :)
 
 
-4. T-Mobile:
+##### T-Mobile:
 
-- Đã bắt đầu sử dụng OpenStack tuy nhiên hiện đang gặp vấn đề về việc upgrade các phiên bản OpenStack, hiện tại họ đang dậm chân tại các phiên bản cũ của OpenStack.
+- Đã bắt đầu sử dụng OpenStack cách đây khá lâu khi mà Ericsson chính là công ty cung cấp Ericsson Cloud Environment tuy nhiên hiện đang gặp vấn đề về việc upgrade các phiên bản OpenStack, hiện tại họ đang dậm chân tại các phiên bản cũ của OpenStack.
 
-5. Ericsson:
+##### Ericsson:
 
 - Có vấn đề về các features liên quan đến networking trong OpenStack. Ericsson đóng góp cho cộng đồng một feature khá hay chính là Vlan-trunking mà bản thân feature này vẫn đang gặp nhiều vấn đề lớn.
 
 
-6. Centurylink:
+##### Centurylink:
 
 - Đang tập trung giải quyết các use case liên quan đến DPDK, SR-IOV, các features vô cùng quan trọng trong việc tối ưu hóa hiệu năng của networking. 
 
 
-7. Nokia:
+##### Nokia:
 
 - Tập trung phát triển bộ 3 CBIS, CBAM, CBND dựa trên nền tảng OpenStack.
 - Sắp tới sẽ đầu tư phát triển thêm sản phẩm Container as a service.
+
 
 
 
