@@ -39,7 +39,7 @@ author:
 #### Use cases
 
 
-**Verizon**
+** 1. Verizon**
  
 - Một sản phẩm nổi trội của Verizon chính là VNS (virtual network services). Họ muốn hướng tới một mô hình gọi là: Masively Distributed OpenStack, nó kha khá tương đồng với Edge computing.
  
@@ -49,7 +49,7 @@ author:
 	* Service orchestrator: Giải pháp riêng của Verizon, chính là cái VNS phía trên.
 	* Multi-layer control: Họ đang hướng tới Tricircle
  
-**AT&T**
+** 2. AT&T**
  
 - AT&T đóng góp khá nhiều cho cộng đồng OpenStack trong mảng container (OpenStack Helm, )
  
