@@ -20,12 +20,12 @@ author:
 ---
 
 
-### Tổng kết meetup Boston
+## Tổng kết meetup Boston
  
 Đây là một số tổng kết ngắn gọn về việc ứng dụng OpenStack cũng như xây dựng đường hướng, mục tiêu xoay quanh hệ sinh thái OpenStack của các công ty lớn. Bản tổng kết sâu về kỹ thuật sẽ được gửi tới các bạn trong meetup tới đây của cộng đồng VietOpenStack.
  
  
-#### Nhận xét chung:
+### Nhận xét chung:
  
 - IaaS Cloud là một trong những keynote trong summit lần này. Các nhà cung cấp dịch vụ sẽ deploy các IaaS cloud cho người dùng và chính bản thân người dùng sẽ quản trị và xử lý các vấn đề liên quan đến nó
  
@@ -36,7 +36,7 @@ author:
 - NFV một lần nữa lại là cái tên được nhắc đến khá nhiều với OpenStack được sử dụng cho private cloud trong lĩnh vực telco. Tuy nhiên vẫn tồn tại một vấn đề liên quan đến sự tương tác giữa các operators, vendors trong telco với cộng đồng OpenStack do đó các operators trong telco nhận ra rằng, cách duy nhất để đạt được các yêu cầu phù hợp với telco một cách nhanh nhất, chính xác nhất chính là bản thân họ phải có các developers cho OpenStack.
  
  
-#### Use cases
+### Use cases
 
 
 ** 1. Verizon**
@@ -67,7 +67,7 @@ author:
 - AT&T cũng đang có xu hướng sẽ sử dụng Magnum trong thờ gian tới
  
  
-**Redhat**
+** 3. Redhat**
  
 - Redhat đặc biệt quan tâm đến các giải pháp cloud liên quan đến Telco trong thời gian gần đây, một trong số đó là giải pháp về multi-sites để đáp ứng các yêu cầu trong telco. Redhat đưa ra một số use case như sau: 
  
@@ -86,19 +86,19 @@ author:
 	* Tricircle: Cái này các bạn có thể check trên Internet nhé :)
  
  
-**T-Mobile**
+** 4. T-Mobile**
  
 - Đã bắt đầu sử dụng OpenStack cách đây khá lâu khi mà Ericsson chính là công ty cung cấp Ericsson Cloud Environment tuy nhiên hiện đang gặp vấn đề về việc upgrade các phiên bản OpenStack, hiện tại họ đang dậm chân tại các phiên bản cũ của OpenStack.
  
-5. Ericsson:
+** 5. Ericsson**
  
 - Có vấn đề về các features liên quan đến networking trong OpenStack. Ericsson đóng góp cho cộng đồng một feature khá hay chính là Vlan-trunking mà bản thân feature này vẫn đang gặp nhiều vấn đề lớn.
  
-6. Centurylink:
+** 6. Centurylink**
  
 - Đang tập trung giải quyết các use case liên quan đến DPDK, SR-IOV, các features vô cùng quan trọng trong việc tối ưu hóa hiệu năng của networking. 
  
-7. Nokia:
+** 7. Nokia**
  
 - Tập trung phát triển bộ 3 CBIS, CBAM, CBND dựa trên nền tảng OpenStack.
 - Sắp tới sẽ đầu tư phát triển thêm sản phẩm Container as a service.
