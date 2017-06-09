@@ -20,7 +20,6 @@ author:
 ---
 
 
-
 ### Tổng kết meetup Boston
 
 Đây là một số tổng kết ngắn gọn về việc ứng dụng OpenStack cũng như xây dựng đường hướng, mục tiêu xoay quanh hệ sinh thái OpenStack của các công ty lớn. Bản tổng kết sâu về kỹ thuật sẽ được gửi tới các bạn trong meetup tới đây của cộng đồng VietOpenStack.
@@ -75,8 +74,6 @@ author:
 	* OpenStack WANWide: Một single OpenStack deployment sẽ quản lý các remote compute resources được đặt tại Edge, các controllers sẽ đc deployed master/slave tại central location. Giải pháp này đơn giản, nhưng ko thể scale, đặc biệt có vấn đề về latency, bandwidth
 
 	* Nova Cells: - Một top-level cell sẽ chạy nova-api. Các child cell sẽ chạy các dịch vụ của Nova, ngoại trừ nova-api. Trong các cell sẽ có nova-db, message queue. Đây cũng chính là use case của CERN.
-
-
 
 	* OpenStack regions: - Mỗi một region sẽ là một deployment hoàn chỉnh của OpenStack, ngoại trừ Keystone được chạy ở central. Central keystone này sẽ authenticate các OpenSTack cloud. each cloud.
 
