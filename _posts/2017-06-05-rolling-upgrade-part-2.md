@@ -113,7 +113,6 @@ Trong bài tiếp theo, tôi sẽ tiếp tục phân tích về các tính chấ
 - Project Tagging
 
 Thân ái, hẹn gặp lại!
-
 Nguyễn Hoài Nam - Vietnam OpenStack Community Organizer
 
 [1] https://specs.openstack.org/openstack/openstack-user-stories/user-stories/proposed/rolling-upgrades.html#gaps
