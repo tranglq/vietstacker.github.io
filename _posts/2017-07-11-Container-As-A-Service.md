@@ -24,15 +24,15 @@ author:
 
 Lưu ý:  Trong note này,  từ  "host"  được dùng  để ám chỉ đến các máy ảo trong môi trường cloud mà các containers đang chạy trên.
 
-1. Quản lý các resources  (RAM, CPU, etc.)  theo các  ứng dụng và tenant:
+1.Quản lý các resources  (RAM, CPU, etc.)  theo các  ứng dụng và tenant:
 
--  Một container cluster có thể chạy một hoặc  nhiều ứng dụng.
+-Một container cluster có thể chạy một hoặc  nhiều ứng dụng.
 
--  Các ứng dụng có  thể yêu cầu các resources  (số lượng CPU, RAM, etc.)  và CaaS  phải đảm bảo rằng  việc cung cấp các resources này  được thực hiện.
+-Các ứng dụng có  thể yêu cầu các resources  (số lượng CPU, RAM, etc.)  và CaaS  phải đảm bảo rằng  việc cung cấp các resources này  được thực hiện.
 
--  Các  tenant  (quản lý một tập hợp các containers) có thể set quota về resources cho các ứng dụng của mình chạy trên các containers, đảm bảo rằng các ứng dụng khác không ảnh hưởng đến  hoạt động của mình trong trường hợp cùng một container  cluster,  có rất nhiều ứng dụng chạy trên đó.
+-Các  tenant  (quản lý một tập hợp các containers) có thể set quota về resources cho các ứng dụng của mình chạy trên các containers, đảm bảo rằng các ứng dụng khác không ảnh hưởng đến  hoạt động của mình trong trường hợp cùng một container  cluster,  có rất nhiều ứng dụng chạy trên đó.
 
-2. Khả năng  liên  kết  tới  network
+2.Khả năng  liên  kết  tới  network
 
 -  Container phải có khả năng  kết nối với nhiều network.  Sẽ có các templates của CaaS được dùng để định nghĩa/chỉ định một network cụ thể (trong nhiều network của infrastructure)  dùng cho việc kết nối tới container trên.
 
