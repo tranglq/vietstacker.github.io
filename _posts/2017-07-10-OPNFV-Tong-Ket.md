@@ -33,9 +33,9 @@ Nếu cho tôi dùng một câu đơn đặc biệt để nói về meetup 1st n
 
 Để nắm được nội dung buổi meetup 1st, nhóm phóng viên xin điểm lại các thông tin sau để anh em không có điều điện theo dõi như sau:  
 
-1. Số lượng người tham gia: 9 người offline và 10 người online trong đó khoảng một nửa là sinh viên, còn lại là những người đã đi làm, có kinh nghiệm với OpenStack và kiến thức ở nhiều mức độ với SDN/NFV.
+1.Số lượng người tham gia: 9 người offline và 10 người online trong đó khoảng một nửa là sinh viên, còn lại là những người đã đi làm, có kinh nghiệm với OpenStack và kiến thức ở nhiều mức độ với SDN/NFV.
 
-2. Nội dung:
+2.Nội dung:
 
 - Presentation: OPNFV Overview and 2017 OPNFV Summit
 
