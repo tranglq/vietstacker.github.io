@@ -25,6 +25,7 @@ author:
 Lưu ý:  Trong note này,  từ  "host"  được dùng  để ám chỉ đến các máy ảo trong môi trường cloud mà các containers đang chạy trên.
 
 
+
 **Quản lý các resources (RAM, CPU, etc.) theo các  ứng dụng và tenant**
 
 * Một container cluster có thể chạy một hoặc  nhiều ứng dụng.
