@@ -30,13 +30,13 @@ Lưu ý:  Trong note này,  từ  "host"  được dùng  để ám chỉ đến
 
 - Các ứng dụng có  thể yêu cầu các resources  (số lượng CPU, RAM, etc.)  và CaaS  phải đảm bảo rằng  việc cung cấp các resources này  được thực hiện.
 
--Các  tenant  (quản lý một tập hợp các containers) có thể set quota về resources cho các ứng dụng của mình chạy trên các containers, đảm bảo rằng các ứng dụng khác không ảnh hưởng đến  hoạt động của mình trong trường hợp cùng một container  cluster,  có rất nhiều ứng dụng chạy trên đó.
+- Các  tenant  (quản lý một tập hợp các containers) có thể set quota về resources cho các ứng dụng của mình chạy trên các containers, đảm bảo rằng các ứng dụng khác không ảnh hưởng đến  hoạt động của mình trong trường hợp cùng một container  cluster,  có rất nhiều ứng dụng chạy trên đó.
 
 2.Khả năng  liên  kết  tới  network
 
--  Container phải có khả năng  kết nối với nhiều network.  Sẽ có các templates của CaaS được dùng để định nghĩa/chỉ định một network cụ thể (trong nhiều network của infrastructure)  dùng cho việc kết nối tới container trên.
+- Container phải có khả năng  kết nối với nhiều network.  Sẽ có các templates của CaaS được dùng để định nghĩa/chỉ định một network cụ thể (trong nhiều network của infrastructure)  dùng cho việc kết nối tới container trên.
 
--  Nếu một container  cần  thiết phải được kết nối tới nhiều networks thì nó phải được kết nối với mô hình 1:1  (một địa chỉ IP/một network).
+- Nếu một container  cần  thiết phải được kết nối tới nhiều networks thì nó phải được kết nối với mô hình 1:1  (một địa chỉ IP/một network).
 
 3.  Khả năng liên kết tới lưu trữ
 
