@@ -20,7 +20,7 @@ author:
 ---
 
 
-## REQUIREMENTS:
+## GENERAL REQUIREMENTS:
 
 Lưu ý:  Trong note này,  từ  "host"  được dùng  để ám chỉ đến các máy ảo trong môi trường cloud mà các containers đang chạy trên.
 
@@ -75,3 +75,7 @@ Lưu ý:  Trong note này,  từ  "host"  được dùng  để ám chỉ đến
 9.  Khả năng support baremetal và virtual machine 
 
 - Điều  này đồng  nghĩa  với  việc CaaS  hỗ  trợ việc orchestrating  containers trên  môi  trường cloud  và baremetal.
+
+
+10-7-2017
+VietStack team
