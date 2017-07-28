@@ -24,22 +24,24 @@ author:
 ---
 ## Rolling-Upgrade [Part 2]
 
-Trong phần tiếp theo của chủ đề **Rolling upgrade** tôi sẽ phân tích về tám tính năng [1] mà một project bất kỳ cần được hỗ trợ để được công nhận có tính năng Rolling upgrade.
+Trong phần tiếp theo của chủ đề **Rolling upgrade** tôi sẽ phân tích về tám tính năng [1] mà một project bất kỳ cần phải implement để có tính năng Rolling upgrade.
 
 --------------------------------
 
 ### 1. Online Schema Migration
 Cho phép thay đổi lược đồ cơ sở dữ liệu mà **không** yêu cầu tắt hết dịch vụ (không hỗ trợ thay đổi về phiên bản cũ hơn).
-Lược đồ cơ sở dữ liệu ở đây ta có thể hiểu là database của một service. Hãy thử hình dung rằng trong phiên bản kế tiếp database đã bị thay đổi như thêm cột/bảng, xóa cột/bảng, hoặc sửa lại tên cột/bảng. Vậy làm thế nào mà ta có thể upgrade database lên phiên bản kế tiếp mà không phải tắt hết tất service cùng một lúc rồi bật, đúng là một bài toán khó đúng không các bạn đọc :) Và có một lời giải cho bài toán này là sử dụng tính năng trigger trong database và cụ thể trong Openstack đã có Keystone, Glance hoặc Facebook đã sử dụng tính năng này để thực hiện việc **Rolling upgrade**.
+Lược đồ cơ sở dữ liệu ở đây ta có thể hiểu là database của một service. Hãy thử hình dung rằng trong phiên bản kế tiếp database đã bị thay đổi như thêm cột/bảng, xóa cột/bảng, hoặc sửa lại tên cột/bảng. Vậy làm thế nào mà ta có thể upgrade database lên phiên bản kế tiếp mà không cần tắt hết các service. Hiện tại, có hai lời giải cho bài toán này. Một là sử dụng tính năng trigger  hay còn gọi là `trigger-based` và hai là không sử dụng trigger gọi là `trigger-less`.
+
+**Lời giải thứ nhất:** Sử dụng trigger.
 
 Vậy `trigger` là gì: Trigger được hiểu đơn giản là một thủ tục được thực thi một cách tự động trong database khi có một sự kiện xảy ra như update, insert hay delete.
-*Ví dụ*: ta có thể tạo ra một trigger để thực hiện việc trước khi ghi một bản ghi vào trong table A thì update bản ghi có foreign-key tương ứng từ table B sang một giá trị khác.
+*Ví dụ*: ta có thể tạo ra một trigger để trước khi ghi một bản ghi vào trong table A thì phải update bản ghi có foreign-key tương ứng từ table B sang một giá trị khác.
 
-Bây giờ tôi sẽ lấy một đầu bài và xin các bạn hãy  **luôn nhớ** nó trong suốt quá trình đọc bài này để có thể hiểu xuyên suốt nhé.
+Bây giờ tôi sẽ lấy một đầu bài và các bạn hãy **luôn nhớ** nó trong suốt quá trình đọc lời giải thứ nhất để có thể hiểu xuyên suốt nhé.
 
 **Bài toán:** Database của một service tại phiên bản N có một bảng tên là "old" nhưng sang database tại phiên bản N+1 đã bị xóa và thay thế bằng bảng mới tên là "new". Vậy làm thế nào để người dùng service đó tại phiên bản N có thể *rolling upgrade* lên phiên bản (N+1).
 
-Sử dụng trigger là một trong những lời giải cho bài toán này và tôi sẽ phân tích từng giai đoạn để các bạn có thể thấy được không có thời điểm nào có service xung đột với database.
+Sử dụng trigger là một trong những lời giải cho bài toán này và tôi sẽ phân tích từng giai đoạn để các bạn thấy được không có thời điểm nào có service xung đột với database.
 
 Trong quá trình rolling upgrade database sử dụng trigger ta sẽ có 3 pha chính:
 - Expand: dùng để thêm cột, bảng, trigger trong database.
