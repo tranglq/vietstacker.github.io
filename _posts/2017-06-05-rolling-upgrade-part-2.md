@@ -94,12 +94,10 @@ Chúng ta đã hoàn thành quá trình upgrade hệ thống sử dụng trigger
 
 **Lời giải thứ hai:** Không sử dụng trigger (trigger-less).
 
-Việc không sử dụng trigger đồng nghĩa với database tại phiên bản N+1 sẽ phải tương thích được với phiên bản N để khi upgrade database lên N+1 thì các service tại N vẫn có thể tương tác được với database. Và sẽ có một số rule trong việc upgrade dabase như sau:
+Việc không sử dụng trigger thì database tại phiên bản N+1 cũng phải tương thích được với phiên bản N để khi upgrade database lên N+1 thì các service tại N vẫn có thể tương tác được. Vậy nên sẽ có một số rule được sinh ra trong việc upgrade dabase để đáp ứng được yêu cầu này:
 
-- Chỉ được thêm và không được xóa sửa cột hoặc bảng tại hai phiên bản kế tiếp (từ N lên N+1) và những cột/bảng đó default là None để xử lý trường hợp service cũ ghi vào database nhưng không có dữ liệu cho cột/bảng mới thì mặc định dữ liêu là None. Việc không được xóa sửa để đảm bảo cho việc service  tại N luôn tương tác được với database tại N+1.
-- Được phép xóa cột bảng của phiên bản N tại phiên bản N+1. Ví dụ như bảng A tại phiên bản N sẽ không được sử dụng tại phiên bản N+1 nhưng tại N+1 thì không được xóa bảng A mà phải chờ lên phiên N+2 mới được xóa bảng A.
-
-Trên đây là 2 rule mà developer phải tuân theo khi không muốn sử dụng giải pháp trigger.
+- *Rule 1:* Chỉ được thêm và không được xóa sửa cột hoặc bảng tại hai phiên bản kế tiếp (từ N lên N+1) và những cột/bảng đó default là None để xử lý trường hợp service cũ ghi vào database nhưng không có dữ liệu cho cột/bảng mới thì mặc định dữ liêu là None. Việc không được xóa sửa để đảm bảo cho việc service  tại N luôn tương tác được với database tại N+1.
+- *Rule 2:* Được phép xóa cột bảng của phiên bản N tại phiên bản N+1. Ví dụ như bảng A tại phiên bản N sẽ không được sử dụng tại phiên bản N+1 nhưng tại N+1 thì không được xóa bảng A mà phải chờ lên phiên N+2 mới được xóa bảng A.
 
 
 
