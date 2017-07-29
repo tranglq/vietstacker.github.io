@@ -89,15 +89,17 @@ Thực hiện contract phase sẽ xóa trigger và "old" table.
 
 - Pha (6): Hoàn thành
 
-Chúng ta đã hoàn thành quá trình upgrade hệ thống sử dụng trigger để xử lý vấn đề thay đổi database. Trong toàn bộ quá trình, service tại phiên bản N hay (N+1) cũng đều có thể tương tác với database, do vậy sẽ giảm được downtime hệ thống khi upgrade.
+Chúng ta đã hoàn thành quá trình upgrade hệ thống sử dụng trigger để xử lý vấn đề thay đổi database. Trong toàn bộ quá trình, service tại phiên bản N hay (N+1) cũng đều có thể tương tác với database, do vậy sẽ giảm được downtime hệ thống khi upgrade. Và hiện nay đã có Keystone và Glance trong Openstack đã sử dụng để upgrade database.
 
 
 **Lời giải thứ hai:** Không sử dụng trigger (trigger-less).
 
-Việc không sử dụng trigger thì database tại phiên bản N+1 cũng phải tương thích được với phiên bản N để khi upgrade database lên N+1 thì các service tại N vẫn có thể tương tác được. Vậy nên sẽ có một số rule được sinh ra trong việc upgrade dabase để đáp ứng được yêu cầu này:
+Việc không sử dụng trigger thì database tại phiên bản N+1 cũng phải tương thích được với phiên bản N để khi upgrade database lên N+1 thì các service tại N vẫn có thể tương tác được. Vậy nên sẽ có một số rule được sinh ra trong việc upgrade dabase để đáp ứng được yêu cầu này. Và hiện nay đã có một số project trong Openstack như Nova, Neutron đang sử dụng lời giải này để upgrade database.
 
 - *Rule 1:* Chỉ được thêm và không được xóa sửa cột hoặc bảng tại hai phiên bản kế tiếp (từ N lên N+1) và những cột/bảng đó default là None để xử lý trường hợp service cũ ghi vào database nhưng không có dữ liệu cho cột/bảng mới thì mặc định dữ liêu là None. Việc không được xóa sửa để đảm bảo cho việc service  tại N luôn tương tác được với database tại N+1.
 - *Rule 2:* Được phép xóa cột bảng của phiên bản N tại phiên bản N+1. Ví dụ như bảng A tại phiên bản N sẽ không được sử dụng tại phiên bản N+1 nhưng tại N+1 thì không được xóa bảng A mà phải chờ lên phiên N+2 mới được xóa bảng A.
+
+Hiện nay đã có một số project trong Openstack như Nova, Neutron hoặc Facebook
 
 
 
@@ -129,4 +131,3 @@ Nguyễn Hoài Nam - Vietnam OpenStack Community Organizer
 
 [1] https://specs.openstack.org/openstack/openstack-user-stories/user-stories/proposed/rolling-upgrades.html#gaps
 
-[2] https://github.com/github/gh-ost/blob/master/doc/why-triggerless.md
