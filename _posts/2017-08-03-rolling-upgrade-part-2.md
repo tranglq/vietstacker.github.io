@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Rolling-Upgrade [Part2]
-date: 2017-06-05
+date: 2017-08-03
 type: post
 published: true
 status: publish
