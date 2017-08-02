@@ -96,9 +96,26 @@ Chúng ta đã hoàn thành quá trình upgrade hệ thống sử dụng trigger
 
 Việc không sử dụng trigger thì database tại phiên bản N+1 cũng phải tương thích được với phiên bản N để khi upgrade database lên N+1 thì các service tại N vẫn có thể tương tác được. Vậy nên sẽ có một số rule được sinh ra trong việc upgrade dabase để đáp ứng được yêu cầu này. Và hiện nay đã có một số project trong Openstack như Nova, Neutron đang sử dụng lời giải này để upgrade database.
 
-- *Rule 1:* Chỉ được thêm và không được xóa sửa cột hoặc bảng tại hai phiên bản kế tiếp (từ N lên N+1) và những cột/bảng đó default là None để xử lý trường hợp service cũ ghi vào database nhưng không có dữ liệu cho cột/bảng mới thì mặc định dữ liêu là None. Việc không được xóa sửa để đảm bảo cho việc service tại N luôn tương tác được với database tại N+1.
-- *Rule 2:* Được phép xóa cột bảng của phiên bản N tại phiên bản N+1. Ví dụ như bảng A tại phiên bản N sẽ không được sử dụng tại phiên bản N+1 nhưng tại N+1 thì không được xóa bảng A mà phải chờ lên phiên N+2 mới được xóa bảng A.
+- *Rule 1:* Chỉ được thêm và không được xóa sửa cột hoặc bảng tại hai phiên bản kế tiếp (từ N lên N+1) và những cột/bảng đó default là None để xử lý trường hợp service cũ ghi vào database nhưng không có dữ liệu cho cột/bảng mới thì mặc định dữ liệu là None. Việc không được xóa sửa để đảm bảo cho việc service tại N luôn tương tác được với database tại N+1.
+- *Rule 2:* Được phép xóa cột bảng của phiên bản N tại phiên bản N+2. Ví dụ như bảng A tại phiên bản N sẽ không được sử dụng tại phiên bản N+1 nhưng tại N+1 thì không được xóa bảng A mà phải chờ lên phiên N+2 mới được xóa bảng A.
 
+
+Trên đây là hai lời giải cho việc **Online Schema Migration**. Vậy ưu nhược điểm của hai lời giải này là gì?
+
+- Đối với trigger-based:
+	- Ưu điểm:
+		- Được phép xóa các cột/bảng của N tại N+1.
+		- Luôn đảm bảo tối ưu các cột/bảng trong database tránh việc dư thừa cột bảng.
+	- Nhược điểm:
+		- Do trigger là một tính năng sẵn có trong database nên sẽ khó khăn cho việc test.
+		- Phụ thuộc vào loại database vì cấu trúc khai báo trigger của mỗi loại database là khác nhau.
+		- Gây đôi chút khó khăn cho việc implement.
+
+- Đối với trigger-lest:
+	- Ưu điểm:
+		- Dễ dàng cho việc implement.
+	- Nhược điểm:
+		- Gây dư thừa các cột/bảng vì tất cả những cột/bảng tại N và không được sử dụng tại N+1 thì phải chờ đến N+2 mới được xóa.
 
 
 Tiếp theo tôi sẽ phân tích tính năng thứ hai.
