@@ -111,9 +111,9 @@ Trên đây là hai lời giải cho việc **Online Schema Migration**. Vậy �
 		- Phụ thuộc vào loại database vì cấu trúc khai báo trigger của mỗi loại database là khác nhau.
 		- Gây đôi chút khó khăn cho việc implement.
 
-- Đối với trigger-lest:
+- Đối với trigger-less:
 	- Ưu điểm:
-		- Dễ dàng cho việc implement.
+		- Dễ dàng cho việc implement và test.
 	- Nhược điểm:
 		- Gây dư thừa các cột/bảng vì tất cả những cột/bảng tại N và không được sử dụng tại N+1 thì phải chờ đến N+2 mới được xóa.
 
