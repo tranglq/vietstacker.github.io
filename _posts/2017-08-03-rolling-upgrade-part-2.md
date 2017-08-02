@@ -24,7 +24,10 @@ author:
 ---
 ## Rolling-Upgrade [Part 2]
 
-Trong phần tiếp theo của chủ đề **Rolling upgrade** tôi sẽ phân tích về tám tính năng [1] mà một project bất kỳ cần phải implement để có tính năng Rolling upgrade.
+Rolling upgrade part 1: https://blog.vietstack.vn/rolling-upgrade-part-1
+
+
+Trong phần hai của chủ đề **Rolling upgrade** tôi sẽ phân tích về tám tính năng [1] mà một project bất kỳ cần phải implement để có tính năng Rolling upgrade.
 
 --------------------------------
 
