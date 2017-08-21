@@ -113,8 +113,8 @@ Theo thống kê mới nhất từ PTL (Graham-mugsie) trên blog của ông <ht
 <table border="1" class="docutils">
 <caption>Commits per cycle</caption>
 <colgroup>
-<col width="61%">
-<col width="39%">
+<col width="65%">
+<col width="40%">
 </colgroup>
 <tbody valign="top">
 <tr>
@@ -180,7 +180,7 @@ Theo quan điểm cá nhân tôi thì có một số điểm như sau đã và �
 
 - Designate vẫn mang phong cách cá nhân hóa để sử dụng cho công ty HPE, đây là công ty cũ của cựu PTL làm việc. Có một số patch-set tôi đẩy lên để thay đổi nhưng đã bị từ chối vì HPE đang sử dụng và không muốn thay đổi (như định dạng trường dữ liệu, tính năng centralize-config, …).
 
-- Designate đang đi chệch đường ray của Openstack do vẫn giữ lại những thiết kế cũ về Object, Config, Project Architecture. Đây là yếu tố quan trọng gây ra nhiều khó khăn khi **contributors** muốn nhảy từ một project khác trong Openstack vào Designate và muốn nắm bắt một cách nhanh chóng và dễ dàng. Với một Project Architecture được thiết kế lâu đời, không có sự cải thiện và không đồng nhất trong Openstack thì sẽ mất rất nhiều thời gian để **contributors** mới bắt đầu tìm hiểu. Như vậy, sẽ có rất ít **contributors** đủ kiên nhẫn để làm việc này. Chúng tôi (*Fujitsu*) đã đề xuất và triển khai các patch-sets liên quan đến Oslo.Versioned Object (OVO) và Online schema migration (OSM) (giai đoạn 1 - Objects tương tác với cơ sở dữ liệu), nhằm đưa Pattern Design đồng bộ với Openstack. Bên cạnh đó, chúng tôi cũng đã có kế hoạch để phát triển nó nếu như giải pháp được đồng ý.
+- Designate đang đi chệch đường ray của Openstack do vẫn giữ lại những thiết kế cũ về Object, Config, Project Architecture. Đây là yếu tố quan trọng gây ra nhiều khó khăn khi **contributors** muốn nhảy từ một project khác trong Openstack vào Designate và muốn nắm bắt một cách nhanh chóng và dễ dàng. Với một Project Architecture được thiết kế lâu đời, không có sự cải thiện và không đồng nhất trong Openstack thì sẽ mất rất nhiều thời gian để **contributors** mới bắt đầu tìm hiểu. Như vậy, sẽ có rất ít **contributors** đủ kiên nhẫn để làm việc này. Chúng tôi (*Fujitsu*) đã đề xuất và triển khai các patch-sets liên quan đến Oslo.Versioned Object (OVO) và Online schema migration (OSM) (giai đoạn 1 - Objects tương tác với cơ sở dữ liệu), nhằm đưa Project Architecture đồng bộ với Openstack. Bên cạnh đó, chúng tôi cũng đã có kế hoạch để phát triển nó nếu như giải pháp được đồng ý.
 
 - Designate chưa kiểm thử hết các DNSServers đã và đang hỗ trợ trong code-base. Đối với vấn đề này, rất cần các **Operators** đã và đang triển khai cung cấp tài liệu và kết quả vào Designate docs. 
 
@@ -188,11 +188,11 @@ Theo quan điểm cá nhân tôi thì có một số điểm như sau đã và �
 
 - Một số tính năng cần phát triển và cải thiện chức năng theo dự định đang bị trì hoãn, đó là:
 
-•	Control Plane API endpoints deployment via WSGI
-•	Python 3.5 functional testing
-•	Mixed Driver environments (one pool using powerDNS, one using Bind) 
-•	Multi DNS Server environments 
-•	Upgrade testing
+  -	Control Plane API endpoints deployment via WSGI
+  -	Python 3.5 functional testing
+  -	Mixed Driver environments (one pool using powerDNS, one using Bind) 
+  -	Multi DNS Server environments 
+  -	Upgrade testing
 
 - Sự tương tác giữa Designate và các project khác trong Openstack là rất hạn chế.
 
