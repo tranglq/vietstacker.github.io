@@ -26,7 +26,7 @@ author:
 
 ## I. OPENSTACK DESIGNATE là gì?
 
-Đây là nguyên văn lời giới thiệu khái niệm cơ bản của Designate trên trang chủ của Openstack:
+Đây là nguyên văn định nghĩa của Designate trên trang chủ của Openstack:
 
 **“Designate is a multi-tenant DNSaaS service for OpenStack. It provides a REST API with integrated Keystone authentication. It can be configured to auto-generate records based on Nova and Neutron actions. Designate supports a variety of DNS servers including Bind9 and Powers.”**
 
@@ -40,7 +40,7 @@ Dưới đây là kinh nghiệm của tôi sau một thời gian thử nghiệm,
 
 ![image1](../pictures/dnsaas.png)
  
-**Designate là Domain Name System as a service (DNSaaS)**. Designate không phải là một DNSServer, đây là một project được sinh ra để quản lý tập trung các DNServers, thông qua Designate chúng ta chỉ cần tạo, sửa, xóa các bản ghi về *zone*, *records* thì chúng sẽ tự động kết nối và thực hiện cập nhật đến tất cả các DNSServers đang kết nối đến Designate. Việc này giúp chúng ta tránh được việc lên từng DNSServer để cấu hình, tiết kiêm thời gian, nhân lực và tăng hiệu quả kinh tế.
+**Designate là Domain Name System as a service (DNSaaS)**. Designate không phải là một DNSServer, đây là một project được sinh ra để quản lý tập trung các DNServers, thông qua Designate chúng ta chỉ cần tạo, sửa, xóa các bản ghi về *zone*, *records*, sau đó sẽ tự động kết nối và thực hiện cập nhật đến tất cả các DNSServers đang kết nối đến Designate. Bằng việc này sẽ tránh được việc lên từng DNSServer để cấu hình, giúp tiết kiêm thời gian, nhân lực và tăng hiệu quả kinh tế.
 
 Ngoài ra, Designate có thể cho phép tích hợp với một số project Lõi trong Openstack như Neutron, Nova, Heat, …
 Dưới đây là dẫn lời từ trang chủ của Openstack:
@@ -51,13 +51,13 @@ Dưới đây là dẫn lời từ trang chủ của Openstack:
 
 #### b. Designate được sử dụng để làm gì?
 
-Như phần khái quát, tôi cũng đã đề cập đến 2 tính năng chính của Designate, đó là quản lý tập trung các DNSServers và tích hợp với các project khác trong Openstack. Trong phần này tôi xin đề cập đến một chức năng chính đó là quản lý các DNSServers.
+Như phần khái quát, tôi cũng đã đề cập đến 2 cụm tính năng chính của Designate, đó là quản lý tập trung các DNSServers và tích hợp với các project khác trong Openstack. Trong phần này tôi xin đề cập đến một chức năng chính đó là quản lý các DNSServers.
 
 Dựa vào topology của Designate dưới đây, chúng ta cũng có thể hiểu được Designate được sử dụng để làm gì:
  
 ![image3](../pictures/dns_topo_1.png)
 
-Designate cung cấp tính năng kiểm soát nhiều DNSServers tại cùng một thời điểm, sau khi các bản ghi được khởi tạo trong Designate, thì chúng sẽ được lưu trữ vào cơ sở dữ liệu của Designate. Đồng thời, thông qua designate-worker service sẽ tương tác trực tiếp với các DNSServers để thực hiện việc cập nhật các bản gi đó vào DNSServers. Quá trình đồng bộ từ Designate vào DNSServer sẽ diễn ra theo một chu kỳ nhất định (do người sử dụng cài đặt), qua đó các DNSServers sẽ nhận được các bản ghi đã được cập nhật mới nhất từ Designate.  
+Designate cung cấp tính năng kiểm soát nhiều DNSServers tại cùng một thời điểm, các bản ghi sẽ được khởi tạo trong Designate và lưu trữ lên cơ sở dữ liệu của Designate. Sau đói, thông qua designate-worker service sẽ tương tác trực tiếp với các DNSServers để thực hiện việc cập nhật các bản gi đó vào các DNSServers. Quá trình đồng bộ từ Designate vào DNSServer sẽ diễn ra theo một chu kỳ nhất định (do người sử dụng cài đặt trên designate.conf file), qua đó các DNSServers sẽ nhận được các bản ghi đã được cập nhật mới nhất từ Designate.  
 
 Hiện tại, Designate đang hỗ trợ để quản lý tập trung các DNSServers (như hình vẽ), cụ thể như: BIND9, PDNS4, Denominator, Djbdns, Msdns, Gdnsd, Knot2, nsd4, dynect và designate. Tuy nhiên, theo thống kê mới nhất thì chỉ có BIND9 đã được tích hợp và được kiểm tra qua OpenStack CI Infrastructure. Vì vậy, việc cần làm là đảm bảo cho các DNS server còn lại hoạt động ổn định và có thể vượt qua bài test của OpenStack CI Infrastructure trong tất cả các commit.
 
@@ -80,7 +80,7 @@ Designate là một service được xếp vào nhóm Network service trong Open
 
 ### 2. Kiến trúc tổng quan của Designate project
 
-Cũng như tất cả các projects khác trong Openstack thì Designate cũng đã và đang sử dụng chung các công nghệ, giao thức hiện có của Openstack, như: RPC, MQ để kết nối các thành phần, các services lại với nhau.
+Cũng như tất cả các projects khác trong Openstack thì Designate cũng đã và đang sử dụng chung các công nghệ, giao thức hiện có của Openstack, như: Remote Procedure Call (RPC), Message Queue (MQ), SQLAlchemy engine để kết nối các thành phần, các services lại với nhau.
 
 Dưới đây là mô hình tổng quan của Designate (theo dữ liệu mới nhất từ Openstack):
 
@@ -90,8 +90,12 @@ Dưới đây là mô hình tổng quan của Designate (theo dữ liệu mới 
 
 ![image7](../pictures/dns_services.png)
 
+Ngoài ra còn một số các services tùy chọn như:
+- designate-agent
+- designate-sink
+
 ```Note:
-- Designate có hỗ trợ để lưu trữ NoSQL (tuy nhiên, chưa có xác minh chính xác cho tính năng này)
+- Designate có hỗ trợ để lưu trữ lên NoSQL (tuy nhiên, chưa có xác nhận chính xác và kiểm nghiệm cho tính năng này)
 - designate-central service sẽ tương tác trực tiếp với cơ sở dữ liệu (DB)
 - designate-worker service sẽ tương tác với DNS servers
 ```
