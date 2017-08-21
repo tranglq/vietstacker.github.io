@@ -43,9 +43,12 @@ Dưới đây là kinh nghiệm của tôi sau một thời gian thử nghiệm,
 **Designate là Domain Name System as a service (DNSaaS)**. Designate không phải là một DNSServer, đây là một project được sinh ra để quản lý tập trung các DNServers, thông qua Designate chúng ta chỉ cần tạo, sửa, xóa các bản ghi về *zone*, *records*, sau đó sẽ tự động kết nối và thực hiện cập nhật đến tất cả các DNSServers đang kết nối đến Designate. Với giải pháp này sẽ tránh được việc lên từng DNSServer để cấu hình, giúp tiết kiêm thời gian, nhân lực và tăng hiệu quả kinh tế.
 
 Ngoài ra, Designate có thể cho phép tích hợp với một số project Lõi trong Openstack như Neutron, Nova, Heat, …
+
+![image2](../pictures/dns_integrated_openstack_2.png)
+
 Dưới đây là dẫn lời từ trang chủ của Openstack:
 
-![image2](../pictures/dns_integrated_openstack.png)
+![image3](../pictures/dns_integrated_openstack.png)
  
 *Note: designate-sink service đã trở thành service tùy chọn (optional), với kiến trúc hiện tại thì Designate có thể lắng nghe trực tiếp thông qua designate-api service.*
 
@@ -55,7 +58,7 @@ Như phần khái quát, tôi cũng đã đề cập đến 2 cụm tính năng 
 
 Dựa vào topology của Designate dưới đây, chúng ta cũng có thể hiểu được Designate được sử dụng để làm gì:
  
-![image3](../pictures/dns_topo_1.png)
+![image4](../pictures/dns_topo_1.png)
 
 Designate cung cấp tính năng kiểm soát nhiều DNSServers tại cùng một thời điểm, các bản ghi sẽ được khởi tạo trong Designate và lưu trữ lên cơ sở dữ liệu của Designate. Sau đói, thông qua designate-worker service sẽ tương tác trực tiếp với các DNSServers để thực hiện việc cập nhật các bản gi đó vào các DNSServers. Quá trình đồng bộ từ Designate vào DNSServer sẽ diễn ra theo một chu kỳ nhất định (do người sử dụng cài đặt trên designate.conf file), qua đó các DNSServers sẽ nhận được các bản ghi đã được cập nhật mới nhất từ Designate.  
 
@@ -63,18 +66,18 @@ Hiện tại, Designate đang hỗ trợ để quản lý tập trung các DNSSe
 
 Dưới đây là thống kê từ nhà phát triển Designate:
 
-![image4](../pictures/dns_backend_status_tables.png)
+![image5](../pictures/dns_backend_status_tables.png)
 
 #### c. Designate ở đâu trong Openstack?
 
-![image5](../pictures/dns_openstack_project.png)
+![image6](../pictures/dns_openstack_project.png)
 
 Openstack có 6 Core projects, gồm Nova, Neutron, Glance, Cinder, Keystone và Swift. Như vậy, Designate là một project con được tích hợp vào Openstack với 2 tính năng chính, đó là:
 
 - Kết nối với Neutron để lấy thông tin bản ghi floating-ip.
 - Lắng nghe tất cả cả các *notification* được bắn ra từ các projects khác trong openstack, như Nova. Đối với các projects khác thì cần test và xác nhận lại từ Core-reviewer.
 
-![image6](../pictures/dns_network_group.png)
+![image7](../pictures/dns_network_group.png)
 
 Designate là một service được xếp vào nhóm Network service trong Openstack cùng với Neutron project.
 
@@ -84,11 +87,11 @@ Cũng như tất cả các projects khác trong Openstack thì Designate cũng �
 
 Dưới đây là mô hình tổng quan của Designate (theo dữ liệu mới nhất từ Openstack):
 
-![image6](../pictures/dns_topo_2.png)
+![image8](../pictures/dns_topo_2.png)
 
 Đây là mô hình được sử dụng từ Newton cycle, với hai services được thay thế từ pool-manager và zone-manager thành worker và producer. Designate có 5 services chính, đó là:
 
-![image7](../pictures/dns_services.png)
+![image9](../pictures/dns_services.png)
 
 Ngoài ra còn một số các services tùy chọn như:
 - designate-agent
@@ -119,7 +122,7 @@ Pike	    95
 
 Trong Pike cycle dưới đây là thống kê mới nhất về số lượng công ty và contributor đã đóng góp vào mã nguồn mở của Designate như sau:
 
-![image8](../pictures/dns_activity_stackanalytic.png) 	 
+![image10](../pictures/dns_activity_stackanalytic.png) 	 
 
 Qua đó, chúng ta thấy *Fujitsu* đang rất quan tâm đến Designate và ứng dụng nó vào hệ thống Cloud K5 của mình. Đây có thể sẽ là một key project của *Fujitsu* để tập trung sử dụng và phát triển các dịch vụ trên nền của Designate.
 
