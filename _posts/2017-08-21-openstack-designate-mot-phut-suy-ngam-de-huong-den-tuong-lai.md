@@ -108,17 +108,53 @@ Note:
 
 Phần I là giới thiệu cơ bản về Designate project, tiếp theo đây là những gì đang diễn ra với Designate trong cộng đồng Openstack.
 
-Theo thống kê mới nhất từ PTL (Graham-mugsie) trên blog của ông <http://graham.hayes.ie/posts/openstack-designate-where-we-are/> và <http://stackalytics.com/> thì số lượng **contributors** đã giảm một cách đáng kể từ Havana Cycle đến nay, cụ thể như sau:
+Theo thống kê mới nhất từ PTL (Graham-mugsie) trên blog của ông <http://graham.hayes.ie/posts/openstack-designate-where-we-are/> và <http://stackalytics.com/> thì số lượng **Commits per cycle** đã giảm một cách đáng kể từ Havana Cycle đến nay, cụ thể như sau:
 
-Havana	  172
-Icehouse	165
-Juno	    254
-Kilo	    340
-Liberty	  327
-Mitaka	  246
-Newton	  299
-Ocata	    98
-Pike	    95
+<table border="1" class="docutils">
+<caption>Commits per cycle</caption>
+<colgroup>
+<col width="61%">
+<col width="39%">
+</colgroup>
+<tbody valign="top">
+<tr>
+<td>Havana</td>
+<td>172</td>
+</tr>
+<tr>
+<td>Icehouse</td>
+<td>165</td>
+</tr>
+<tr>
+<td>Juno</td>
+<td>254</td>
+</tr>
+<tr>
+<td>Kilo</td>
+<td>340</td>
+</tr>
+<tr>
+<td>Liberty</td>
+<td>327</td>
+</tr>
+<tr>
+<td>Mitaka</td>
+<td>246</td>
+</tr>
+<tr>
+<td>Newton</td>
+<td>299</td>
+</tr>
+<tr>
+<td>Ocata</td>
+<td>98</td>
+</tr>
+<tr>
+<td>Pike</td>
+<td>95</td>
+</tr>
+</tbody>
+</table>
 
 Trong Pike cycle dưới đây là thống kê mới nhất về số lượng công ty và contributor đã đóng góp vào mã nguồn mở của Designate như sau:
 
