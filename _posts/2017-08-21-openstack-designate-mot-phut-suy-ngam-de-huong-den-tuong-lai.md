@@ -30,7 +30,7 @@ author:
 
 **“Designate is a multi-tenant DNSaaS service for OpenStack. It provides a REST API with integrated Keystone authentication. It can be configured to auto-generate records based on Nova and Neutron actions. Designate supports a variety of DNS servers including Bind9 and Powers.”**
 
-Đây là một khái niệm cực kỳ chung chung để nói về những công dụng của Designate, vì vậy để hiểu hết được tính năng cũng như công dụng của nó thì cần phải có thời gian nghiên cứu với code-base và thực tế bắt tay vào cài đặt một lab nhỏ với một vài DNS servers (backend) như BIND9 hay Pdns4.
+Đây là một khái niệm cực kỳ chung chung để nói về những công dụng của Designate, vì vậy để hiểu hết được tính năng cũng như công dụng của nó thì cần phải có thời gian nghiên cứu với code-base và thực tế bắt tay vào cài đặt và thử nghiệm trên một lab với một vài DNS servers (backend) như BIND9 hay Pdns4.
 
 Dưới đây là kinh nghiệm của tôi sau một thời gian thử nghiệm, cũng như **contribute** vào Designate project như sau:
 
@@ -40,7 +40,7 @@ Dưới đây là kinh nghiệm của tôi sau một thời gian thử nghiệm,
 
 ![image1](../pictures/dnsaas.png)
  
-**Designate là Domain Name System as a service (DNSaaS)**. Designate không phải là một DNSServer, đây là một project được sinh ra để quản lý tập trung các DNServers, thông qua Designate chúng ta chỉ cần tạo, sửa, xóa các bản ghi về *zone*, *records*, sau đó sẽ tự động kết nối và thực hiện cập nhật đến tất cả các DNSServers đang kết nối đến Designate. Bằng việc này sẽ tránh được việc lên từng DNSServer để cấu hình, giúp tiết kiêm thời gian, nhân lực và tăng hiệu quả kinh tế.
+**Designate là Domain Name System as a service (DNSaaS)**. Designate không phải là một DNSServer, đây là một project được sinh ra để quản lý tập trung các DNServers, thông qua Designate chúng ta chỉ cần tạo, sửa, xóa các bản ghi về *zone*, *records*, sau đó sẽ tự động kết nối và thực hiện cập nhật đến tất cả các DNSServers đang kết nối đến Designate. Với giải pháp này sẽ tránh được việc lên từng DNSServer để cấu hình, giúp tiết kiêm thời gian, nhân lực và tăng hiệu quả kinh tế.
 
 Ngoài ra, Designate có thể cho phép tích hợp với một số project Lõi trong Openstack như Neutron, Nova, Heat, …
 Dưới đây là dẫn lời từ trang chủ của Openstack:
@@ -61,7 +61,7 @@ Designate cung cấp tính năng kiểm soát nhiều DNSServers tại cùng m�
 
 Hiện tại, Designate đang hỗ trợ để quản lý tập trung các DNSServers (như hình vẽ), cụ thể như: BIND9, PDNS4, Denominator, Djbdns, Msdns, Gdnsd, Knot2, nsd4, dynect và designate. Tuy nhiên, theo thống kê mới nhất thì chỉ có BIND9 đã được tích hợp và được kiểm tra qua OpenStack CI Infrastructure. Vì vậy, việc cần làm là đảm bảo cho các DNS server còn lại hoạt động ổn định và có thể vượt qua bài test của OpenStack CI Infrastructure trong tất cả các commit.
 
-Dưới đây là thông kê từ nhà phát triển Designate:
+Dưới đây là thống kê từ nhà phát triển Designate:
 
 ![image4](../pictures/dns_backend_status_tables.png)
 
@@ -94,11 +94,10 @@ Ngoài ra còn một số các services tùy chọn như:
 - designate-agent
 - designate-sink
 
-```Note:
+Note:
 - Designate có hỗ trợ để lưu trữ lên NoSQL (tuy nhiên, chưa có xác nhận chính xác và kiểm nghiệm cho tính năng này)
 - designate-central service sẽ tương tác trực tiếp với cơ sở dữ liệu (DB)
 - designate-worker service sẽ tương tác với DNS servers
-```
 
 ## II. DESIGNATE trong OPENSTACK hiên nay?
 
@@ -106,7 +105,7 @@ Ngoài ra còn một số các services tùy chọn như:
 
 Phần I là giới thiệu cơ bản về Designate project, tiếp theo đây là những gì đang diễn ra với Designate trong cộng đồng Openstack.
 
-Theo thống kê mới nhất từ PTL (Graham-mugsie) trên blog của ông và <http://stackalytics.com/> thì số lượng **contributors** đã giảm một cách đáng kể từ Havana Cycle đến nay, cụ thể như sau:
+Theo thống kê mới nhất từ PTL (Graham-mugsie) trên blog của ông <http://graham.hayes.ie/posts/openstack-designate-where-we-are/> và <http://stackalytics.com/> thì số lượng **contributors** đã giảm một cách đáng kể từ Havana Cycle đến nay, cụ thể như sau:
 
 Havana	  172
 Icehouse	165
@@ -144,9 +143,9 @@ Theo quan điểm cá nhân tôi thì có một số điểm như sau đã và �
 
 - Designate đang đi chệch đường ray của Openstack do vẫn giữ lại những thiết kế cũ về Object, Config, Pattern Design. Đây là yếu tố quan trọng gây ra nhiều khó khăn khi **contributors** muốn nhảy từ một project khác trong Openstack vào Designate và muốn nắm bắt một cách nhanh chóng và dễ dàng. Với một Pattern Design được thiết kế lâu đời, không có sự cải thiện và không đồng nhất trong Openstack thì sẽ mất rất nhiều thời gian để **contributors** mới bắt đầu tìm hiểu. Như vậy, sẽ có rất ít **contributors** đủ kiên nhẫn để làm việc này. Chúng tôi (*Fujitsu*) đã đề xuất và triển khai các patch-sets liên quan đến Oslo.Versioned Object (OVO) và Online schema migration (OSM) (giai đoạn 1 - Objects tương tác với cơ sở dữ liệu), nhằm đưa Pattern Design đồng bộ với Openstack. Bên cạnh đó, chúng tôi cũng đã có kế hoạch để phát triển nó nếu như giải pháp được đồng ý.
 
-- Designate chưa kiểm thử hết các DNSServers đã support trong code-base. Đối với vấn đề này, rất cần các **Operators** đã và đang triển khai cung cấp tài liệu và kết quả vào Designate docs. 
+- Designate chưa kiểm thử hết các DNSServers đã và đang hỗ trợ trong code-base. Đối với vấn đề này, rất cần các **Operators** đã và đang triển khai cung cấp tài liệu và kết quả vào Designate docs. 
 
-- Designate chưa đạt độ ổn định cao, xuất hiện nhiều *Bugs* trong quá trình triển khai.
+- Designate chưa đạt độ ổn định cao, xuất hiện nhiều *Bugs* trong quá trình triển khai. <https://bugs.launchpad.net/designate>
 
 - Một số tính năng cần phát triển và cải thiện chức năng theo dự định đang bị trì hoãn, đó là:
 
