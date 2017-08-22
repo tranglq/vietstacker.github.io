@@ -60,7 +60,7 @@ Dựa vào topology của Designate dưới đây, chúng ta cũng có thể hi�
  
 ![image4](../pictures/dns_topo_1.png)
 
-Designate cung cấp tính năng kiểm soát nhiều DNSServers tại cùng một thời điểm, các bản ghi sẽ được khởi tạo trong Designate và lưu trữ lên cơ sở dữ liệu của Designate. Sau đói, thông qua designate-worker service sẽ tương tác trực tiếp với các DNSServers để thực hiện việc cập nhật các bản gi đó vào các DNSServers. Quá trình đồng bộ từ Designate vào DNSServer sẽ diễn ra theo một chu kỳ nhất định (do người sử dụng cài đặt trên designate.conf file), qua đó các DNSServers sẽ nhận được các bản ghi đã được cập nhật mới nhất từ Designate.  
+Designate cung cấp tính năng kiểm soát nhiều DNSServers tại cùng một thời điểm, các bản ghi sẽ được khởi tạo trong Designate và lưu trữ lên cơ sở dữ liệu của Designate. Sau đó, thông qua designate-worker service sẽ tương tác trực tiếp với các DNSServers để thực hiện việc cập nhật các bản gi đó vào các DNSServers. Quá trình đồng bộ từ Designate vào DNSServer sẽ diễn ra theo một chu kỳ nhất định (do người sử dụng cài đặt trên designate.conf file), qua đó các DNSServers sẽ nhận được các bản ghi đã được cập nhật mới nhất từ Designate.  
 
 Hiện tại, Designate đang hỗ trợ để quản lý tập trung các DNSServers (như hình vẽ), cụ thể như: BIND9, PDNS4, Denominator, Djbdns, Msdns, Gdnsd, Knot2, nsd4, dynect và designate. Tuy nhiên, theo thống kê mới nhất thì chỉ có BIND9 đã được tích hợp và được kiểm tra qua OpenStack CI Infrastructure. Vì vậy, việc cần làm là đảm bảo cho các DNS server còn lại hoạt động ổn định và có thể vượt qua bài test của OpenStack CI Infrastructure trong tất cả các commit.
 
@@ -205,6 +205,7 @@ Bên cạnh đó, chúng ta cũng có thể kêu gọi các **contributors** và
 Cá nhân tôi sẽ tiếp tục **contribute** vào Designate và phát triển 1 vài tính năng gồm:
 
 - Viết docs về "How to use the Designate in HA topology"
+- Nghiên cứu để tích hợp thêm một số DNSServers mới vào Designate.
 - Phát triển tính năng kiểm tra tình trạng DNSServers và các bản ghi trên tất cả các DNSServers kết nối đến Designate.
 
 Cheer!
