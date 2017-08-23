@@ -37,7 +37,7 @@ So, the solution is this: We do not touch the default kubeconfig of K8s cluster 
 
 After discussing with Ami, we agreed on a solution and thank you for noting down, hope you can read my blog here :D. Here is his email: ami.mahloof@gmail.com.
 
-The blog: https://medium.com/@amimahloof/how-to-setup-helm-and-tiller-with-rbac-and-namespaces-34bf27f7d3c3
+The blog: <https://medium.com/@amimahloof/how-to-setup-helm-and-tiller-with-rbac-and-namespaces-34bf27f7d3c3>
 
 Hope you enjoy it !!!
 
