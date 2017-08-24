@@ -16,9 +16,9 @@ tags:
 meta:
   _publicize_pending: '1'
 author:
-  login: Trung
+  login: trungnvfet
   email: trungnv@vn.fujitsu.com
-  display_name: trungnv
+  display_name: Nguyen Van Trung
   first_name: Trung
   last_name: Nguyen-Van
 ---
@@ -30,7 +30,7 @@ author:
 
 **“Designate is a multi-tenant DNSaaS service for OpenStack. It provides a REST API with integrated Keystone authentication. It can be configured to auto-generate records based on Nova and Neutron actions. Designate supports a variety of DNS servers including Bind9 and Powers.”**
 
-Đây là một khái niệm cực kỳ chung chung để nói về những công dụng của Designate, vì vậy để hiểu hết được tính năng cũng như công dụng của nó thì cần phải có thời gian nghiên cứu với code-base và thực tế bắt tay vào cài đặt và thử nghiệm trên một lab với một vài DNS servers (backend) như BIND9 hay Pdns4.
+Đây là một khái niệm cực kỳ chung chung để nói về những công dụng của Designate, vì vậy để hiểu hết được tính năng cũng như công dụng của nó thì cần phải có thời gian nghiên cứu với code-base, thực tế bắt tay vào cài đặt và thử nghiệm trên một lab với một vài DNS servers (backend) như BIND9 hay Pdns4.
 
 Dưới đây là kinh nghiệm của tôi sau một thời gian thử nghiệm, cũng như **contribute** vào Designate project như sau:
 
@@ -72,7 +72,7 @@ Dưới đây là thống kê từ nhà phát triển Designate:
 
 ![image6](../pictures/dns_openstack_project.png)
 
-Openstack có 6 Core projects, gồm Nova, Neutron, Glance, Cinder, Keystone và Swift. Như vậy, Designate là một project con được tích hợp vào Openstack với 2 tính năng chính, đó là:
+Openstack có 6 Core projects, gồm Nova, Neutron, Glance, Cinder, Keystone và Swift (con được gọi là Compute Kit). Như vậy, Designate là một project con được tích hợp vào Openstack với 2 tính năng chính, đó là:
 
 - Kết nối với Neutron để lấy thông tin bản ghi floating-ip.
 - Lắng nghe tất cả cả các *notification* được bắn ra từ các projects khác trong openstack, như Nova. Đối với các projects khác thì cần test và xác nhận lại từ Core-reviewer.
@@ -162,19 +162,19 @@ Trong Pike cycle dưới đây là thống kê mới nhất về số lượng c
 
 Qua đó, chúng ta thấy *Fujitsu* đang rất quan tâm đến Designate và ứng dụng nó vào hệ thống Cloud K5 của mình. Đây có thể sẽ là một key project của *Fujitsu* để tập trung sử dụng và phát triển các dịch vụ trên nền của Designate.
 
-Những gì chúng ta cần quan tâm trong biểu đồ này là số lượng công ty và **contributors** ngoài *Fujitsu* là rất ít và không đáng kể, điều này cho thấy sức thu hút để phát triển project đã suy giảm rất trầm trọng và có nguy cơ không còn **contributors** trong tương lai nếu *Fujitsu* không nhìn thấy tiềm năng và sự phát triển của Designate để tiếp tục đầu tư. Cũng như trong các buổi IRC meeting hàng tuần vào 17:00(UTC) thứ 4, gần như chỉ có **contributors** từ *Fujitsu* tương tác với PTL (timsim) và Cựu PTL(mugsie).
+Những gì chúng ta cần quan tâm trong biểu đồ này là số lượng công ty và **contributors** ngoài *Fujitsu* là rất ít và không đáng kể, điều này cho thấy sức thu hút để phát triển project đã suy giảm rất trầm trọng và có nguy cơ không còn **contributors** trong tương lai nếu *Fujitsu* không nhìn thấy tiềm năng và sự phát triển của Designate để tiếp tục đầu tư. Cũng như trong các buổi IRC meeting hàng tuần vào 17:00(UTC) thứ 4, gần như chỉ có **contributors** từ *Fujitsu* tương tác với PTL (timsim) và Cựu PTL (mugsie).
 
-Với những gì đang diễn ra, nếu không có những chính sách kịp thời thì Designate project có thể sẽ không còn là project chính thức của Openstack nữa (official project). Đây sẽ là tổn thất rất lớn cho các công ty đã và đang sử dụng Openstack nói chung và tính năng DNSaaS nói riêng.
+Với những gì đang diễn ra, nếu không có những chính sách kịp thời thì Designate project có thể sẽ không còn là project chính thức của Openstack nữa (official project - Big Tent). Đây sẽ là tổn thất rất lớn cho các công ty đã và đang sử dụng Openstack nói chung và tính năng DNSaaS nói riêng.
 
 ### 2. Tại sao Designate lại rơi vào hoàn cảnh như hiện tại và định hướng trong tương lai như thế nào?
 
-Đối với 1 project trong Openstack, người ta sử dụng thước đo bằng **activity** qua từng chu kỳ (cycle) của mỗi project để đánh gía được project đó đang phát triển, sự quan tâm và sử dụng từ cộng đồng hay không. Đối với Designate thì **activity** ở Pike cycle chỉ còn gần ¼ so với Kilo cycle.
+Đối với 1 project trong Openstack, người ta sử dụng thước đo bằng **activity** qua từng chu kỳ (cycle) của mỗi project để đánh gíá được mưc độ phát triển của project đó, sự quan tâm và sử dụng từ cộng đồng hay không. Đối với Designate thì **activity** ở Pike cycle chỉ còn gần ¼ so với Kilo cycle.
 
 Như phần đầu tôi đã đề cập, Designate chưa khẳng định được sự hiệu quả của mình để thu hút các công ty đầu tư vào để sử dụng và phát triển. Bên cạnh đó, Designate cũng không thu hút được nhiều **contributors** tham gia đóng góp vào mã nguồn mở của mình.
 
 Theo quan điểm cá nhân tôi thì có một số điểm như sau đã và đang ảnh hưởng đến Designate:
 
-- Hiện tại thì PTL và Core-reviewer không còn được trả Tiền để duy trì và phát triển cho Designate project, theo lời của cựu PTL đã nói: “We are now one corporate change of direction from having no cores on the project being paid to work on the project”. Tuy nhiên, theo thông tin mới nhất qua IRC meeting thì Graham sẽ qua trở lại với chức danh PTL từ Queen cycle và sẽ dành full-time để dẫn dắt Designate (đây là một tin cực vui cho Designate team) quay trở lại với quỹ đạo.
+- Hiện tại thì PTL và Core-reviewer không còn được trả tiền để duy trì và phát triển cho Designate project, theo lời của cựu PTL đã nói: “We are now one corporate change of direction from having no cores on the project being paid to work on the project”. Tuy nhiên, theo thông tin mới nhất qua IRC meeting thì Graham sẽ qua trở lại với chức danh PTL từ Queen cycle và sẽ dành full-time để dẫn dắt Designate (đây là một tin cực vui cho Designate team) quay trở lại với quỹ đạo.
 
 - Số lượng Core-reviewer gần như là 0, vì vậy nó gây ra rất nhiều khó khăn trong việc kiểm thử và xem xét các tính năng mới phát triển từ **contributors**.
 
@@ -193,12 +193,13 @@ Theo quan điểm cá nhân tôi thì có một số điểm như sau đã và �
   -	Mixed Driver environments (one pool using powerDNS, one using Bind) 
   -	Multi DNS Server environments 
   -	Upgrade testing
+  - Enable Worker model as default
 
 - Sự tương tác giữa Designate và các project khác trong Openstack là rất hạn chế.
 
 - Tài liệu cho người sử dụng (Operators) và developer còn sơ sài, không bao trùm hết các trường hợp sử dụng trong thực tế. Đây là yếu tố then chốt làm người dùng gặp nhiều khó khăn khi triển khai và tương tác với Designate.
 
-Trên đây là một số quan điểm của tôi về tình trạng của Designate, để giải quyết tất cả các bài toàn đó cần phải có thời gian và một PTL tâm huyết (tôi nghĩ từ Queen, chúng ta sẽ có cái này, ^_^). Bản thân tôi có thì việc cung cấp các tài liệu rõ ràng nên được ưu tiên hàng đầu, thứ hai là việc đồng bộ với Openstack project (kiểm thử với giải pháp OVO, OSM và centralize-config của *Fujitsu* đã triển khai và đề xuất) và thứ 3 là phát triển các tính năng liên quan đến tích hợp với các project khác trong Openstack.
+Trên đây là một số quan điểm của tôi về tình trạng của Designate, để giải quyết tất cả các bài toàn đó cần phải có thời gian và một PTL tâm huyết (tôi nghĩ từ Queen, chúng ta sẽ có cái này ^_^). Bản thân tôi nghĩ thì việc cung cấp các tài liệu rõ ràng nên được ưu tiên hàng đầu, thứ hai là việc đồng bộ với Openstack project (kiểm thử với giải pháp OVO, OSM và centralize-config của *Fujitsu* đã triển khai và đề xuất) và thứ 3 là phát triển các tính năng liên quan đến tích hợp với các project khác trong Openstack.
 
 Bên cạnh đó, chúng ta cũng có thể kêu gọi các **contributors** và **Operators** qua MailList của Openstack.
 
