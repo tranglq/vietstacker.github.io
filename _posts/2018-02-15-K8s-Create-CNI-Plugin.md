@@ -1,7 +1,7 @@
 ---
 layout: post
-title: CD-Design-With-Helm-And-Tiller
-date: 2017-08-23
+title: K8s-Create_CNI-Plugin
+date: 2018-02-15
 type: post
 published: true
 status: publish
@@ -19,27 +19,30 @@ author:
   last_name: Stack
 ---
 
-## CI/CD Design With Helm And Tiller
+## Let's have a quick look about CNI at some points:
 
-### Exercise
+- K8s accepts CNI specification and its plugins to orchestrate networking whereas Docker uses libnetwork plugin interface.
+- There are some main steps happening in CNI:
+	  - Container runtime creates a network namespace. However, docker does not create a symlink to /var/run/netns therefore it may be refusing that there is no result when checking "ip netns"
+	  - Provisioning network is provided by a JSON file. CNI will refer to the "type" field within JSON file which defines plugin and then invoke the corresponding plugin executable file.
+	  - Plugin creates vethpair and assign IP address to the interface.
 
-As we all know that, when we design CI/CD for microservice using container technology, Helm chart is an useful tool for it. In this post, i will not talk about Helm and Tiller, suppose that we know what they are, if not, you can check the official web page of K8s or looking for it on Internet.
+There is alot of information about CNI on Internet so we should not waste time for it here. Let's rock it on with a real test.
 
-The problem i want to solve here is: Suppose that when we have multiple stages in CI/CD, for example, testing stage, deployment stage, pre-production stage (testing rolling-upgrade or performance test), etc. and then going to production environment which is actually a K8s cluster, we need to ensure that in the production enviroment (CD process) the security aspect should be ensure when Jenkins triggers the CD process. Why? Because Jenkins should not run inside the production environment, it should be run remotely at the standpoint of production environment. In this case, Jenkins should be able to talk to kubectl (the commandline of K8s cluster of production environment) remotely. But, it can only do that if it is provided with kubeconfig of cluster which is NOT secure if we distribute it outside of cluster. We by somehow need to ensure the protection of kubeconfig of K8s cluster.
+## Test Implementation
 
-### What is the role of Helm in this problem? 
+### Enviroment
 
-In fact, helm - just k8s package manager - just talks to kubectl under the hood. If we want to use Helm for CD, we still have problem as described above.
-So, the solution is this: We do not touch the default kubeconfig of K8s cluster but we create a temporary kubeconfig which is attached to a separate namespace of a temporary user. After that, we will attach tiller deployment running on K8s on that created namespace. Therefore when helm does something with chart, it will contact to tiller in that specific namespace - which is different to "kube-system" (the default namespace) namespace of tiller. Under the hood, kubectl will be run under the above created kubeconfig, not the default kubeconfig.
+- I have here myself a testbed which is k8s multinode. I created it with kubeadm for testing and used flannel or overlay network. All the nodes are using Ubuntu 16.04
 
+### What is the test about?
 
-### For more details?
+- We will create a pod which has initially 2 interfaces: One is loopback, another one is eth0 which is actually created and attached to flannel network.
 
-After discussing with Ami, we agreed on a solution and thank you for noting down, hope you can read my blog here :D. Here is his email: ami.mahloof@gmail.com.
+- After that, we will attach another interface to the running container of that pod.
 
-The blog: <https://medium.com/@amimahloof/how-to-setup-helm-and-tiller-with-rbac-and-namespaces-34bf27f7d3c3>
+- I create an executable that will help us to do that. This executable is not only for flannel network but also for others. It means that when you run it, you just need to provide the cni plugin you want, the rest will be done automatically.
 
-Hope you enjoy it !!!
 
 
 Tutj/VietStack
