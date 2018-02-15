@@ -43,6 +43,18 @@ There is alot of information about CNI on Internet so we should not waste time f
 
 - I create an executable that will help us to do that. This executable is not only for flannel network but also for others. It means that when you run it, you just need to provide the cni plugin you want, the rest will be done automatically.
 
+### Implementation
+
+- Here is the link of code: https://github.com/vietstacker/K8s-CNI-Plugin
+- Use go dep to create dependencies for main.go and go build to create executable file, for instance: my executable file called "main".
+- Here i am going to add a new interface of flannel, you can add whichever type of cni network you want, calico, weaver, etc.
+- You have to download the executable file of cni plugin and put it to the $PATH_OF_CNI_PLUGIN directory.
+- The command you should run is: 
+	
+   sudo CNI_COMMAND=ADD CNI_CONTAINERID=$CONTAINER_ID CNI_NETNS=/var/run/netns/$CONTAINER_ID CNI_IFNAME=eth12 CNI_PATH=$PATH_OF_CNI_PLUGIN ./main <vietstack.conf
+	
+
+So.............. Have fun !
 
 
 Tutj/VietStack
