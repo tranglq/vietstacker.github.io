@@ -36,12 +36,17 @@ So, imagine that, there will be separate namespaces where separate Tillers which
 
 In order demonstrate this test, I set up myself a new User called "tiller" with RBAC, a new namespace called "tiller". On that namespace, i installed Tiller server as Deployment by using yaml file (not using Helm CLI) and Appscode/Swift. For more information about Appscode/Swift, check this link: https://appscode.com/products/swift/0.8.0/welcome/. I also install Helm CLI just for checking the result. 
 
-Now, let's rock it on !!! Have a look to the Pic 1. Firstly, i have only 2 pods running which are swift and tiller server as well as there are no releases. Then i run the below command which send a request to swift to deploy a new release in the namespace "tiller":
+Now, let's rock it on !!! Have a look to the Pic 1: 
+
+![image1](../pictures/swift_process.png)
+
+Firstly, i have only 2 pods running which are swift and tiller server as well as there are no releases. Then i run the below command which send a request to swift to deploy a new release in the namespace "tiller":
 
 curl 10.3.65.16:9855/tiller/v2/releases/test-release/json -X POST -d '{ "chart_url":"stable/zetcd", "namespace":"tiller"}'
 
 The reponse is back in the Pic 2 as below:
 
+![image1](../pictures/swift_api.png)
 
 Then have a look back to Pic 1 and we see that there exists now a new "test-release" which contains 2 pods.
 
