@@ -46,7 +46,7 @@ curl 10.3.65.16:9855/tiller/v2/releases/test-release/json -X POST -d '{ "chart_u
 
 The reponse is back in the Pic 2 as below:
 
-![image2](../pictures/swift_api.png)
+![image2](../pictures/swift-api.png)
 
 Then have a look back to Pic 1 and we see that there exists now a new "test-release" which contains 2 pods.
 
