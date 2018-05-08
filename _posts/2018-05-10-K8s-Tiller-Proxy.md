@@ -42,7 +42,7 @@ Now, let's rock it on !!! Have a look to the Pic 1:
 
 Firstly, i have only 2 pods running which are swift and tiller server as well as there are no releases. Then i run the below command which send a request to swift to deploy a new release in the namespace "tiller":
 
-curl 10.3.65.16:9855/tiller/v2/releases/test-release/json -X POST -d '{ "chart_url":"stable/zetcd", "namespace":"tiller"}'
+**curl 10.3.65.16:9855/tiller/v2/releases/test-release/json -X POST -d '{ "chart_url":"stable/zetcd", "namespace":"tiller"}'**
 
 The reponse is back in the Pic 2 as below:
 
