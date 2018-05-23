@@ -10,15 +10,15 @@ Traditional Stack -> Virtualization Stack -> Cloud Stack -> Programmable Stack -
 
 
 API Management
-______________
+############/
 VNF APP
-______________
+############
 API
-______________
+############
 Cloud Layer (Virtualization, Infrastructure Services)
-______________
+############
 API
-______________
+############
 HW
 
 
