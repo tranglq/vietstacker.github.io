@@ -1,3 +1,25 @@
+---
+layout: post
+title: OpenStack-Telco-CloudApp-Architecture
+date: 2018-05-23
+type: post
+published: true
+status: publish
+categories:
+- Tech
+meta:
+  _wpcom_is_markdown: '1'
+  _rest_api_published: '1'
+  _rest_api_client_id: "-1"
+author:
+  login: vnstack
+  email: vietstack@gmail.com
+  display_name: vietstack
+  first_name: Viet
+  last_name: Stack
+---
+
+
 Trong Telco Cloud Architect, ta sẽ chia thành các khối chính, đó là SDDC (Software Defined Data Center) Architect, VNF Architect, Container Framework và Cloud Infrastructure Management. Thực ra, kiến trúc này ta hoàn toàn có thể áp dụng cho các kiến trúc cloud khác, không nhất thiết phải trong Telco. Ví dụ, các VNF ta hoàn toàn có thể thay thế bằng các Cloud App. Trong series này ta sẽ cùng nhau định nghĩa từng khối để làm rõ vai trò, chức năng từng thành phần trong đó.
 
 #### Toàn cảnh sự phát triển của "stack"
