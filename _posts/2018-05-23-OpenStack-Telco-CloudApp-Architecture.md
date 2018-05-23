@@ -10,7 +10,7 @@ Traditional Stack -> Virtualization Stack -> Cloud Stack -> Programmable Stack -
 
 
 API Management
-############/
+############
 VNF APP
 ############
 API
