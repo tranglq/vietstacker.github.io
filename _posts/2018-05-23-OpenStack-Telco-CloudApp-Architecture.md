@@ -10,15 +10,15 @@ Traditional Stack -> Virtualization Stack -> Cloud Stack -> Programmable Stack -
 
 
 API Management
-############
+  ^
 VNF APP
-############
+  ^
 API
-############
+  ^
 Cloud Layer (Virtualization, Infrastructure Services)
-############
+  ^
 API
-############
+  ^
 HW
 
 
@@ -31,11 +31,11 @@ Self-Operated Stack = Programmable Stack + ML/AI (Machine Learning/Artificial In
 
 
 API Management
-______________
+/______________/
 VNF APP (ML/AI)
-______________
+/______________/
 API
-______________
+/______________/
 Cloud Layer (Virtualization, Infrastructure Services) (ML/AI)
 ______________
 API
