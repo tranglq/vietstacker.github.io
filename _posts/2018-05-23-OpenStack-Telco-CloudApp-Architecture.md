@@ -1,6 +1,6 @@
 Trong Telco Cloud Architect, ta sẽ chia thành các khối chính, đó là SDDC (Software Defined Data Center) Architect, VNF Architect, Container Framework và Cloud Infrastructure Management. Thực ra, kiến trúc này ta hoàn toàn có thể áp dụng cho các kiến trúc cloud khác, không nhất thiết phải trong Telco. Ví dụ, các VNF ta hoàn toàn có thể thay thế bằng các Cloud App. Trong series này ta sẽ cùng nhau định nghĩa từng khối để làm rõ vai trò, chức năng từng thành phần trong đó.
 
-I. Toàn cảnh sự phát triển của "stack"
+#### Toàn cảnh sự phát triển của "stack"
 
 Ta sẽ nhìn câu chuyện này dưới góc độ "stack" như sơ đồ dưới đây:
 
@@ -10,16 +10,17 @@ Traditional Stack -> Virtualization Stack -> Cloud Stack -> Programmable Stack -
 
 
 API Management
-----
+***************
 VNF APP
--------
+***************
 API
---------
+***************
 Cloud Layer (Virtualization, Infrastructure Services)
--------
+***************
 API
--------
+***************
 HW
+
 
 Các bạn có thể thấy rằng, việc đưa các API vào giữa các lớp của Cloud Stack sẽ làm cho người dùng có thể kiểm soát tùy ý một cách dễ dàng. Đơn cử một trong những API giữa Cloud Layer với HW chính là SDN (Software Define Network), hoặc VNFM chính là nơi cung cấp API giữa Cloud Layer và VNF APP.
 
@@ -30,15 +31,15 @@ Self-Operated Stack = Programmable Stack + ML/AI (Machine Learning/Artificial In
 
 
 API Management
-----
+/______________/
 VNF APP (ML/AI)
--------
+/______________/
 API
---------
+/______________/
 Cloud Layer (Virtualization, Infrastructure Services) (ML/AI)
--------
+______________
 API
--------
+______________
 HW (ML/AI)
 
 
