@@ -12,6 +12,5 @@ Vậy, bây giờ ta sẽ cùng xem đứng dưới góc độ kỹ thuật thì
 
 (Sorry các bạn là hình mình vẽ vội bằng tay trong giờ họp nên ko được đẹp cho lắm, các bạn bỏ qua nhé :D).
 
-T
 
 VietStack/Tutj
