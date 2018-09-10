@@ -33,5 +33,32 @@ Nói chung là tớ thực sự nể mấy chú Nga, họ giỏi, đồng nghi�
 1. Block size limit lớn
 
 Ta nhận thấy rõ ràng rằng, E// đã được phát triển trong vòng 3 năm, tuy nhiên kích cỡ blockchain đã đạt đến mức 1Tb. Trong khi đó bitcoin thì là khoảng 190Gb trong vòng 9 năm tồn tại. Block size lớn dẫn đến 2 hậu quả như sau:
+  - Khó khăn hơn trong việc đồng bộ hóa E// fullnode so với Bitcoin fullnode. Chính vì vậy mà thay vào đó trong thực tế, hầu hết các dự án E// đều là SPV.
+  - Các miners cần nhiều connections hơn nữa để giải quyết vấn đề về việc có quá nhiều transactions chuyển đến (cái này là do latency chứ ko phải bandwidth). Điều này là giảm số lượng của miners dẫn đến khả năng về nguy cơ có ai đó đạt được 51% hashpower để kiểm soát toàn bộ E// network.
+Qua đó ta thấy rõ ràng rằng, vấn đề này dẫn đến khả năng centralization cao hơn, gây ra những hậu quả về mà tôi đã đề cập trước đây về centralization.
 
-to be continued ....
+2. CPU-bound Turing complete script. 
+
+Đây là một vấn đề khá là khó :d. Tôi nghĩ ta có thể đồng tình với nhau rằng "flexibility" càng cao thì đồng nghĩa với việc scope cho khả năng có bug càng lớn. Tức là khả năng xuất hiện bug trong hệ thống có thể xảy ra trong nhiều khu vực hơn trong một hệ thống. Nhắc đến bug trong E// thì ko thể không nhắc đến một bug kinh điển là devops199 khi mà ông này "lỡ tay" tiêu hủy 300M USD tiền ảo. E// có khả năng biểu thị phạm vi tính toán lớn hơn bitcoin rất nhiều cho nên đồng nghĩa với việc scope cho khả năng xuất hiện bug trong E// cũng lớn hơn nhiều lần. Sự cố devops199 là một ví dụ như vậy.
+
+Tuy nhiên bug là một điều hiển nhiên trong thực tế, chả có cái gì hoàn hảo cả, vạn vật đều khiếm khuyết. Tuy nhiên, cái vấn đề to lớn ở đây chính là các blockchain (Bitcoin, E//) implementation đều gán liền với consensus algorithm - thuật toán đồng thuận. Thuật toán này không phải voting, nó là consensus nên nó sẽ phải trải dài trên toàn bộ blockchain network, không phải trong một nhóm hay một section cụ thể nào đó trong blockchain network. Và trong một thực thể tính toán lớn như E// thì khi bug được tìm thấy, gần như ko thể để vá khi mà bạn commit tiền của bạn vào trong network (sự cố devops199 cho thấy rõ ràng vấn đề này). Nếu một bug tương tự tìm thấy thì số tiền của bạn sẽ đơn giản là bị "mất".
+
+Và tất nhiên, E// đã rollback để giải quyết các sự cố trên. Tuy nhiên, tôn chỉ của E// ban đầu là "code is law" nhưng sau khi E// rollback thì đây chính là sự thể hiện của việc "Ethereum foundation is law". Tức là lúc này, sự implementation của E// nằm trong tay của E// Foundation, tức là centralization. Trong Bitcoin, quy mô của script là nhỏ hơn, scope cho việc xuất hiện bug là thấp hơn. Nó cũng dễ dàng hơn cho việc fix các bug trong off-chain code - nó sử dụng on-chain code để enforcement, không phải execution - hơn là fix bug trong on-chain code. Offchain- đơn giản nghĩa là ít dữ liệu của người dùng hơn được lưu on-chain. Điều này sẽ làm cho blocksize nhỏ hơn và privacy sẽ tốt hơn. Về vấn đề off-chain code, ta sẽ nhắc đên Lightning Network cho Bitcoin sau.
+
+Qua đó ta thấy được rằng, Turing complete không phải để thể hiện "sức mạnh" về khả năng tính toán, cái mà một hệ thống blockchain cần chính là sự tin cậy (đặc biệt trong tiền tệ). Mà E// đang chưa thể hiện được sự tin cậy, trong khi đó Bitcoin với việc tránh dùng Turing complete script đang cho thấy sự tin cậy cao hơn.
+
+3. Kế hoạch dùng PoS thay vì PoW.
+
+Trong PoS, mọi thứ sẽ phải được thực hiện theo trình tự nhưng PoS không có khả năng để bảo vệ việc "rollback". Vì đơn giản, ông nào tham gia network mà có nhiều stake (nói nôm na là cổ phần) hơn thì có quyển quyết hơn. Chính vì vậy mà transaction của bạn có thể không được thực hiện, tiền có thể ko đến được với bạn và bị rollback vì một stakeholder nào đó vì đơn giản hắn ta giàu hơn bạn :D. So sánh với PoW thì rollback rất khó, trong thực tế là gần như không thể nếu bạn không sở hữu hơn 50% hashrate.
+
+PoS là một cái gì đó khá không hay, các blockchain platform sử dụng PoS phát hành token hay quá trình ICO của họ cũng sẽ thể hiện vấn đề này. Đây lại là một hình thái khác của cái gọi là "centralization".
+
+4. Sự tập trung hóa trong việc phát triển E// và xoay quanh Buterin
+
+Rõ ràng ta thấy rằng, chả ai biết SatoShi Nakamoto - ông tổ của Bitcoin là ai. Có thể rằng, Satoshi chỉ là một cái tên nào đó, là một ai đó vẫn đang đóng góp vào sự phát triển của bitcoin và tham gia cộng đồng phát triển bitcoin như là một người bình thường. Satoshi cũng là một người bình thường, và đương nhiên ông ý cũng có lỗi chứ. Và thực tế là gì, rất nhiều những vision cũ của Satoshi trong việc phát triển bitcoin đã ko còn được sử dụng. Bitcoin giờ thuộc về cộng đồng. Nhưng E// lại là khác, mọi thứ đều xoay quanh Buterin. Điều này lại một lần nữa cho thấy "centralization".
+
+Okay, ta đã bàn khá nhiều về Bitcoin và E//. Tuy nhiên blockchain là một ý niệm rộng, 2 thứ trên chỉ là một implementation trong lĩnh vực tiền ảo, còn có rất nhiều blockchain được phát triển cho các asset khác nữa. Bên cạnh đó, nhắc đến blockchain không thể nhăc đến một khái niệm hay ho: Smart contract. Rất nhiều người nói rằng, E// hay các public blockchain khác cung cấp smart contract nên người dùng có thể dễ dàng giao dịch mà ko cần bên thứ 3 chứng thực. Vậy sm
+
+
+
+  
