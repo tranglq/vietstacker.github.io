@@ -57,7 +57,7 @@ PoS là một cái gì đó khá không hay, các blockchain platform sử dụn
 
 Rõ ràng ta thấy rằng, chả ai biết SatoShi Nakamoto - ông tổ của Bitcoin là ai. Có thể rằng, Satoshi chỉ là một cái tên nào đó, là một ai đó vẫn đang đóng góp vào sự phát triển của bitcoin và tham gia cộng đồng phát triển bitcoin như là một người bình thường. Satoshi cũng là một người bình thường, và đương nhiên ông ý cũng có lỗi chứ. Và thực tế là gì, rất nhiều những vision cũ của Satoshi trong việc phát triển bitcoin đã ko còn được sử dụng. Bitcoin giờ thuộc về cộng đồng. Nhưng E// lại là khác, mọi thứ đều xoay quanh Buterin. Điều này lại một lần nữa cho thấy "centralization".
 
-Okay, ta đã bàn khá nhiều về Bitcoin và E//. Tuy nhiên blockchain là một ý niệm rộng, 2 thứ trên chỉ là một implementation trong lĩnh vực tiền ảo, còn có rất nhiều blockchain được phát triển cho các asset khác nữa. Bên cạnh đó, nhắc đến blockchain không thể nhăc đến một khái niệm hay ho: Smart contract. Rất nhiều người nói rằng, E// hay các public blockchain khác cung cấp smart contract nên người dùng có thể dễ dàng giao dịch mà ko cần bên thứ 3 chứng thực. Vậy sm
+Okay, ta đã bàn khá nhiều về Bitcoin và E//. Tuy nhiên blockchain là một ý niệm rộng, 2 thứ trên chỉ là một implementation trong lĩnh vực tiền ảo, còn có rất nhiều blockchain được phát triển cho các asset khác nữa. Bên cạnh đó, nhắc đến blockchain không thể nhăc đến một khái niệm hay ho: Smart contract. Rất nhiều người nói rằng, E// hay các public blockchain khác cung cấp smart contract nên người dùng có thể dễ dàng giao dịch mà ko cần bên thứ 3 chứng thực. Vậy smart contract là gì?
 
 
 
