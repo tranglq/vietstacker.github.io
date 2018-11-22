@@ -1,4 +1,4 @@
-1. Tổng hợp chung
+### Tổng hợp chung
 
 - Một số công ty telco đã "biến mất" trong khu vực Marketplace, chỉ có ZTE và Nokia có booth, E//, AT&T, Huawei, etc. không thấy đâu mặc dù vẫn có nhưng bài presentations.
 - Foundation vẫn đang tiếp tục con đường trở thành một multi-project foundation trong đó OpenStack chỉ là một trong những project. Summit tiếp theo sẽ được đổi tên thành: Open Infrastructure Summit.
@@ -11,7 +11,7 @@
 - Deutsch Telecom đang viết một prototype về 5G Edge Cloud sử dụng MobileEdgeX: https://mobiledgex.com/
 
 
-2. Các vấn đề cụ thể:
+### Các vấn đề cụ thể:
 
 - Phiên bản Rocky: 
 	- Released vào 8/2018
