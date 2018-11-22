@@ -1,6 +1,6 @@
 ### Tổng hợp chung
 
-- Một số công ty telco đã "biến mất" trong khu vực Marketplace, chỉ có ZTE và Nokia có booth, E//, AT&T, Huawei, etc. không thấy đâu mặc dù vẫn có nhưng bài presentations.
+- Một số công ty telco đã "biến mất" trong khu vực Marketplace, chỉ có ZTE, Huawei và Nokia có booth, E//, AT&T, etc. không thấy đâu mặc dù vẫn có nhưng bài presentations.
 - Foundation vẫn đang tiếp tục con đường trở thành một multi-project foundation trong đó OpenStack chỉ là một trong những project. Summit tiếp theo sẽ được đổi tên thành: Open Infrastructure Summit.
 - Những dự án hiện tại của foundation chính là: OpenStack, Zuul, StarlingX, Airship, Kata container, trong đó thì OpenStack và Zuul được nhận định là đã "trưởng thành".
 - Các topics kỹ thuật trong summit lần này được phân làm 3 khu vực chính:
@@ -62,7 +62,7 @@
 	- StartlingX đang trong quá trình tìm kiếm các yêu cầu cho các ứng dụng container hóa.
 
 - Containers:
-	- Kata container đang có những bước phát triển rất tố, các bước tiến về dev nhanh kể từ summit trước tuy nhiên việc đưa vào sử dụng vẫn còn hạn chế.
+	- Kata container đang có những bước phát triển rất tốt, các bước tiến về dev nhanh kể từ summit trước tuy nhiên việc đưa vào sử dụng vẫn còn hạn chế.
 	- Tightly coupled tới các máy ảo Linux tại thời điểm hiện tại và yêu cầu có các agent trong VM. Do đó với các non-Linux VM, kata cần thiết phải có các agent implementation.
 	- K8s dường như là người chiến thắng trong câu chuyện về container orchestrator, có rất nhiều session nói về việc triển khai k8s trên OpenStack cũng như baremetal.
 	- Rất nhiều các hãng lớn như Google, IBM, etc. offer các giải pháp của họ sử dụng k8s trên Ubuntu.
