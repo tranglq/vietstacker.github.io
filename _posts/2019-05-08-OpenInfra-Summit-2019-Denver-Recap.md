@@ -11,3 +11,5 @@ Expanding from scope of OpenStack to OpenInfra is observed in the many activitie
 Open source plays a big role in many of the current 5G deployments, including many OpenStack products. 5G must support bunch of new data services, not only voice but video streaming, auto driving, drones, tele medicine, etc. Many of OpenStack projects have been developed to serve new technology applications that make them selected in telco's 5G tournaments. At this event AT&T again demonstrated the role of OpenStack products with low latency demo VR games over 5G networks.
 
 ![image1](../pictures/denver1.jpg)
+
+To be continued ...
