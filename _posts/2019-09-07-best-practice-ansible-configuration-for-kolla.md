@@ -38,19 +38,19 @@ Về mặt công nghệ, dự án Kolla phát triển dựa trên hai công cụ
 
 #### Cấu hình cho ansible ở file `/etc/ansible/ansible.cfg`
 
-```ini
-[defaults]
-host_key_checking = False
-forks = 39
-gathering = smart
-fact_caching = jsonfile
-fact_caching_connection = /etc/ansible/facts.d
-fact_caching_timeout = 0
+  ```ini
+  [defaults]
+  host_key_checking = False
+  forks = 39
+  gathering = smart
+  fact_caching = jsonfile
+  fact_caching_connection = /etc/ansible/facts.d
+  fact_caching_timeout = 0
 
-[ssh_connection]
-ssh_args = -o ControlMaster=auto -o ControlPersist=900s
-pipelining = True
-```
+  [ssh_connection]
+  ssh_args = -o ControlMaster=auto -o ControlPersist=900s
+  pipelining = True
+  ```
 
 Trong đó:
 
@@ -66,10 +66,10 @@ Trong đó:
 - Khi đã có cache, bỏ qua play `Gather facts for all` trong kolla-ansible
 - Có thể skip các fact không liên quan như hardware
 
-```yaml
-setup:
-  gather_subset: !hardware
-```
+  ```yaml
+  setup:
+    gather_subset: !hardware
+  ```
 
 - Mặc định, kolla-ansible sẽ luôn gọi common role từ tất cả các role. Khi deploy mà không ảnh hưởng đến các thành phần common, skip common trong metadata của role tương ứng
 - Khi deploy nhiều dịch vụ có chứa common, có thể skip common trong các tag đầu, chỉ để lại common trong tag cuối nhằm tránh chạy đi chạy lại nhiều lần việc triển khai các container thuộc common role
