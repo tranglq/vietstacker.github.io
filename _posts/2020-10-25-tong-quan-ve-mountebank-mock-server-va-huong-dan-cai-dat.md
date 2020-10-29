@@ -26,7 +26,7 @@ tên là Mountebank.
 Tóm tắt
 - Contract testing
 - Mountebank mock server
-- Cách cài đặt
+- Hướng dẫn tạo contract với Mountebank sử dụng docker-compose
 ------------
 
 ## Contract testing
