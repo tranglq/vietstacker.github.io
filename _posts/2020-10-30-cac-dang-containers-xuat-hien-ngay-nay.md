@@ -19,28 +19,58 @@
 
 Tóm tắt:
 
-1. Khái niệm về container
-2. Giới thiệu về 2 dạng containers cơ bản: 
-- OS container
-  - Khái niệm
-  - Kiến trúc
-  - Chức năng
-  - Công cụ: 
-    - LXC/LXD
-    - OpenVZ
-    - Linux VServer,...
-- Application container
-  - Khái niệm
-  - Kiến trúc
-  - Chức năng
-  - Công cụ: 
-    - Docker
-    - CRI-O
-    - Kubernetes...
-3. So sánh: VM - OS container - Application container
-4. Sự kết hợp của nhiều loại containers trên một nền tảng
-- Trên một nền tảng có thể triển khai cùng lúc nhiều dạng containers kết hợp
+1. Đặt vấn đề
+- Xu hướng phát triển công nghệ nói chung, container nói riêng
+  - Số liệu các năm
+  - Tỷ lệ ứng dụng trong các doanh nghiệp
+- Tại sao các doanh nghiệp ngày càng có xư hướng sử dụng công nghệ container?
+  - Bắt kịp xu hướng công nghệ mới
+  - Chuyển đổi monolithic app sang kiến trúc microservice
+  - Tối đa hoá giá trị khi áp dụng CI/CD
+  - Đơn giản hoá việc quản lý vòng đời ứng dụng
+- Một số công ty công nghệ đang phát triển công nghệ containers
+  - Acquia, Amazon web services, Google, DigitalOcean 
+- Các loại container không chỉ Docker container
 
+2. Container và các dạng container
+  2.1. Container
+    - Khái niệm
+    - Mục đích sử dụng container:
+      - Deploy ứng dụng nhanh chóng trên nhiều môi trường khác nhau nhưng nhất quán về code và cấu hình
+      - Tăng cường tính linh động
+      - Khả năng tự phục hồi, tự mở rộng
+      - Giảm chi phí bằng cách tối ưu hoá tài nguyên
+      - Cải thiện thời gian hoạt động
+    - Container với mỗi đối tượng người dùng:
+      - Deverlopers
+      - IT management
+      - Doanh nghiệp 
+    - Một số nhà cung cấp công nghệ container:
+      - Docker, LXC, rkt, FreeBSD Jails, Solaris Zones, LXD
+      - Tỷ lệ được ưa chuộng, nguyên nhân
+  2.2. Giới thiệu về 2 dạng containers cơ bản: 
+  - OS container
+    - Khái niệm
+    - Mô hình kiến trúc của OS container: hình ảnh, mô tả
+    - Vị trí, vai trò của OS container trong kiến trúc ứng dụng
+    - Một số công nghệ OS container phổ biến: 
+      - LXC/LXD
+      - OpenVZ
+      - Linux VServer,...
+  - Application container
+    - Khái niệm
+    - Mô hình kiến trúc của application container: hình ảnh, mô tả
+    - Vị trí, vai trò của OS container trong kiến trúc ứng dụng
+    - Một số công nghệ application container phổ biến: 
+      - Docker
+      - CRI-O
+      - Kubernetes...
+  2.3. So sánh VM - OS container - Application container
+  - Vị trí, vai trò trong kiến trúc ứng dụng
+  - Sự kết hợp của nhiều loại containers trên một nền tảng. Trên một nền tảng có thể triển khai cùng lúc nhiều dạng containers kết hợp
+
+3. Công nghệ container trong các nền tảng ứng dụng của doanh nghiệp
+  
 
 ---
 Reference
@@ -50,6 +80,7 @@ Blog
 2. https://jfrog.com/knowledge-base/6-alternatives-to-docker-all-in-one-solutions-and-standalone-container-tools/
 3. https://www.cio.com/article/2924995/what-are-containers-and-why-do-you-need-them.html 
 4. https://www.contino.io/insights/beyond-docker-other-types-of-containers 
+5. https://learn.g2.com/container-technology 
 
 Articles
 1. https://www.researchgate.net/publication/325534952_Containers_for_Virtualization_An_Overview
