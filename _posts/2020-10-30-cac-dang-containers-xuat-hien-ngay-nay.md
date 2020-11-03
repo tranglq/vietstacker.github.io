@@ -67,11 +67,17 @@ Tóm tắt:
       - Kubernetes...
   2.3. So sánh VM - OS container - Application container
   - Vị trí, vai trò trong kiến trúc ứng dụng
-  - Sự kết hợp của nhiều loại containers trên một nền tảng. Trên một nền tảng có thể triển khai cùng lúc nhiều dạng containers kết hợp
+Kết luận
 
-3. Công nghệ container trong các nền tảng ứng dụng của doanh nghiệp
-  
+3. Sự kết hợp của nhiều loại containers trên một nền tảng. 
+- Trên một nền tảng có thể triển khai cùng lúc nhiều dạng containers kết hợp
+- Cài đặt Docker container trên LXC
 
+4. Kết luận
+- Có nhiều dạng container, nhiều nhà cung cấp công nghệ container
+- Tuỳ vào mục đích sử dụng có thể lựa chọn loại container phù hợp
+với mô hình kiến trúc của ứng dụng
+- Có thể kết hợp sử dụng nhiều dạng container trong một mô hình kiến trúc
 ---
 Reference
 
@@ -95,3 +101,10 @@ Books
 4. https://linuxacademy.com/templates/default/assets/pdf/containers-for-everyone-ebook.pdf 
 5. https://www.linuxjournal.com/sites/default/files/2018-11/GeekGuide-Puppet-Containers101.pdf 
 6. https://www.liquidtechnology.net/wp-content/uploads/2018/01/Container-Technology.pdf
+
+Companies
+1. Containers at google: https://cloud.google.com/containers
+2. Containers on Compute Engine: https://cloud.google.com/compute/docs/containers
+3. https://linuxcontainers.org
+4. https://www.docker.com/resources/what-container 
+5. Containers on AWS: https://aws.amazon.com/vi/containers/
