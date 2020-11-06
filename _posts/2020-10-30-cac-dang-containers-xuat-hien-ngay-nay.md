@@ -20,14 +20,9 @@
 Tóm tắt:
 
 1. Đặt vấn đề
-- Xu hướng phát triển công nghệ nói chung, container nói riêng
-  - Số liệu các năm
-  - Tỷ lệ ứng dụng trong các doanh nghiệp
-- Tại sao các doanh nghiệp ngày càng có xư hướng sử dụng công nghệ container?
-  - Bắt kịp xu hướng công nghệ mới
-  - Chuyển đổi monolithic app sang kiến trúc microservice
-  - Tối đa hoá giá trị khi áp dụng CI/CD
-  - Đơn giản hoá việc quản lý vòng đời ứng dụng
+- Container có phải Docker không?
+- Có những loại container nào?
+- Có những công nghệ container nào đang phát triển ngoài Docker?
 - Một số công ty công nghệ đang phát triển công nghệ containers
   - Acquia, Amazon web services, Google, DigitalOcean 
 - Các loại container không chỉ Docker container
@@ -69,15 +64,11 @@ Tóm tắt:
   - Vị trí, vai trò trong kiến trúc ứng dụng
 Kết luận
 
-3. Sự kết hợp của nhiều loại containers trên một nền tảng. 
-- Trên một nền tảng có thể triển khai cùng lúc nhiều dạng containers kết hợp
-- Cài đặt Docker container trên LXC
-
 4. Kết luận
+- Container không phải là docker. Docker là một nhà cung cấp công nghệ container phổ biến hiện nay. 
 - Có nhiều dạng container, nhiều nhà cung cấp công nghệ container
 - Tuỳ vào mục đích sử dụng có thể lựa chọn loại container phù hợp
-với mô hình kiến trúc của ứng dụng
-- Có thể kết hợp sử dụng nhiều dạng container trong một mô hình kiến trúc
+và kết hợp sử dụng nhiều dạng container trong một mô hình kiến trúc
 ---
 Reference
 
