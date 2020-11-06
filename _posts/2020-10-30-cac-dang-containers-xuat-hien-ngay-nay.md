@@ -99,3 +99,17 @@ Companies
 3. https://linuxcontainers.org
 4. https://www.docker.com/resources/what-container 
 5. Containers on AWS: https://aws.amazon.com/vi/containers/
+
+--------
+Chào các bạn, là mình, tranglua đây! 
+
+Như các bạn đã biết, Container hiện nay đã trở thành một khái niệm vô 
+cùng quen thuộc không chỉ với cộng đồng OpenInfra chúng mình rồi phải
+không. Khi nhắc tới container, mọi người thường liên tưởng ngay tới 
+Docker. Đúng vậy, Docker gần gũi với chúng ta tới mức rất nhiều bạn đã
+dần lầm tưởng Docker là container, container chính là Docker rồi. Vậy hai khái niệm này có phải là một không nhỉ? Hôm nay tớ và các bạn sẽ 
+cùng nhau làm rõ vấn đề nhé!
+
+Đầu tiên, tớ xin khẳng định với mọi người, Docker hoàn toàn không phải
+container và hai khái niệm này chúng ta không thể gộp làm một nhé. Docker
+
