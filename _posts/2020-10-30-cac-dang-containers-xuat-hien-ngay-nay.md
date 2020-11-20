@@ -169,3 +169,14 @@ trên một container một cách độc lập. Bên cạnh Docker, chúng ta c�
 vài công cụ phổ biến khác giúp triển khai `Application container` như Kubernates, 
 CRI-O,...
 
+
+
+|                    | Application Container                |System Container
+|--------------------|--------------------------------------|----------------------
+| Content            | Contain a single process             | Contain a complete runtime environment
+| Filesystem         | Layered ﬁlesystem                    | Filesystem neutral
+| Design purpose     | Run micro services                   | Provide a lightweight virtual machine
+| Usage Scenario     | Used for distributing applications   | Used for providing underlying infrastructure
+
+`Bảng so sánh Application container và OS container`
+
