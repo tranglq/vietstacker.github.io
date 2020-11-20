@@ -154,29 +154,47 @@ mới, công nghệ container.
 Dựa theo định nghĩa như đã nêu trên, người ta chia container ra làm 2 loại: `OS
 Container` và `Application Container`.
 
-Khá giống với virtual machines, `OS container` được thiết kế nhỏ gọn hơn, là giải 
+`OS container` là giải 
 pháp chạy đa tiến trình tập trung chủ yếu vào việc cung cấp một môi trường runtime 
-(OS), chạy các dịch vụ như init, sshd, syslog. OS container thường được sử dụng để 
-triển khai các ứng dụng có dạng monolithic truyền thống khi triển khai với các đặc 
-tính chung là hạ tầng vật lý của host, các công cụ và cấu hình trên các VMs. Có 
+(OS) chia sẻ OS kernel nhưng độc lập về vùng tài nguyên người dùng. Khá giống với virtual 
+machines, chúng ta có thể cài đặt, cấu hình và chạy các ứng dụng, thư viện,...
+Bất kỳ các đối tượng nào có mặt trong container đều chỉ có thể nhận biết được vùng
+tài nguyên được gán cho container đó. OS container thường được sử dụng để 
+triển khai các ứng dụng có dạng monolithic truyền thống khi triển khai. Có 
 nhiều công cụ hỗ trợ triển khai OS containers như LXD, BSD jails,...
 
 Khác với OS Container, `Application container` cho phép chạy đơn tiến trình với
-mục tiêu chính là hỗ trợ các dịch vụ nhỏ (microservice), dễ dàng triển khai các 
+mục đích chính là hỗ trợ các dịch vụ nhỏ (microservice), dễ dàng triển khai các 
 ứng dụng phân tán. Lúc này, mỗi ứng dụng có thể được chia ra nhiều tasks đóng gói 
 thành các images. Bằng cách sử dụng các images này, mỗi task sẽ được triển khai 
 trên một container một cách độc lập. Bên cạnh Docker, chúng ta có thể kể đến một 
 vài công cụ phổ biến khác giúp triển khai `Application container` như Kubernates, 
 CRI-O,...
 
+##### So sánh hai loại container 
 
+Dưới đây là bảng so sánh giữa `Application container` và `System container`
 
 |                    | Application Container                |System Container
 |--------------------|--------------------------------------|----------------------
-| Content            | Contain a single process             | Contain a complete runtime environment
+| Content            | Contain a single process. Build on cgroups, namespaces, native process resource isolation             | Contain a complete runtime environment. Build on top of OS container technology
 | Filesystem         | Layered ﬁlesystem                    | Filesystem neutral
 | Design purpose     | Run micro services                   | Provide a lightweight virtual machine
 | Usage Scenario     | Used for distributing applications   | Used for providing underlying infrastructure
+| Examples           | Docker, Rocket, Kubernetes           | LXC, OpenVZ, LinuxVServer, BSD Jails,...
 
-`Bảng so sánh Application container và OS container`
+Bảng 1. Bảng so sánh Application container và OS container trích trong `A Performance 
+Study of Containers in Cloud Environment`, trường Đại học Bách khoa Huazhong, Trung Quốc
+(có chỉnh sửa bổ sung)
 
+Như vậy, nếu như bạn muốn đóng gói và phân tán ứng dụng của bạn thành nhiều thành phần,
+`Application container` sẽ giúp bạn làm điều đó cực kỳ tốt. Còn nếu bạn cần một hệ điều
+hành cài đặt nhiều thư viện, ngôn ngữ, database,... khác nhau thì `OS container` là một
+lựa chọn phù hợp hơn cả.
+
+##### Tổng kết
+Trên đây mình đã trình bày về container cũng như những loại container đang có hiện nay.
+Mong rằng bài viết này có thể giúp các bạn có cái nhìn rõ nét hơn về các khái niệm giữa 
+`Docker` và `container`, đồng thời có thể đưa ra được những lựa chọn về loại container 
+phù hợp nhất cho đội mình. Và đừng quên `Docker` không phải là lựa chọn duy nhất khi bạn
+muốn áp dụng công nghệ container đâu nhé! 
