@@ -117,7 +117,7 @@ năng suất công việc, giảm chi phí thiết bị, chuẩn hoá các tiế
 Hiện nay ngoài Docker ra cũng có rất nhiều các phần mềm hỗ trợ triển khai công
 nghệ container như LXC, Rkt, FreeBSD Jails, Solaris Zones, LXD. Theo thống kê
 tờ báo nghiên cứu `Cloud Container Technologies` của Đại học Carnegie Mellon, Mỹ năm
-2017, Docker chiếm tỉ lệ được ưu chuộng cao nhất với 40%. Theo sau đó là LXC với
+2017 [6], Docker chiếm tỉ lệ được ưu chuộng cao nhất với 40%. Theo sau đó là LXC với
 21%, Kubernetes 9%, OpenVZ 9%,... Sở dĩ Docker được phổ biến nhanh chóng như vậy
 bởi đây là một sản phẩm mã nguồn mở nắm bắt sớm được sự phát triển của công nghệ
 mới, công nghệ container.
@@ -158,8 +158,8 @@ Dưới đây là bảng so sánh giữa `Application container` và `System con
 | Usage Scenario     | Used for distributing applications   | Used for providing underlying infrastructure
 | Examples           | Docker, Rocket, Kubernetes           | LXC, OpenVZ, LinuxVServer, BSD Jails,...
 
-Bảng 1. Bảng so sánh Application container và OS container trích trong `A Performance 
-Study of Containers in Cloud Environment`, trường Đại học Bách khoa Huazhong, Trung Quốc
+**Bảng 1.** Bảng so sánh Application container và OS container trích trong `A Performance 
+Study of Containers in Cloud Environment`, trường Đại học Bách khoa Huazhong, Trung Quốc [7]
 (có chỉnh sửa bổ sung)
 
 Như vậy, nếu như bạn muốn đóng gói và phân tán ứng dụng của bạn thành nhiều thành phần,
