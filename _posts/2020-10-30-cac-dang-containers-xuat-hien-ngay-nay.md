@@ -125,8 +125,8 @@ services, Google, DigitalOcean,...
 #### Container và các dạng container
 ##### Container
 Như mình đã trình bày phía trên, container là nhóm các tiến trình chạy trên một
-single host có những đặc tính chung. Những đặc tính chung ấy có thể là: CPU, 
-storage, OS kernel,... 
+single host có những đặc tính chung dựa trên các layer của kiến trúc hệ thống. 
+Những đặc tính chung ấy có thể là: CPU, storage, OS kernel,... 
 
 Ngày nay, công nghệ container càng lúc càng phát triển nhờ những lợi ích đem
 lại cho các nhà phát triển như:
@@ -154,12 +154,18 @@ mới, công nghệ container.
 Dựa theo định nghĩa như đã nêu trên, người ta chia container ra làm 2 loại: `OS
 Container` và `Application Container`.
 
-Khá giống với virtual machines, `OS container` là giải pháp chạy đa tiến trình tập 
-trung vào chủ yếu vào việc cung cấp một môi trường runtime hoàn thiện như OS, chạy
-các dịch vụ như init, sshd, syslog. OS container thường được sử dụng để triển khai
-các ứng dụng có dạng monolithic truyền thống vì chúng cho phép triển khai cơ sở
-hạ tầng của host, các công cụ và cấu hình trên các VMs. Có nhiều cách khác nhau để
-triển khai System containers như BSD jails,...
+Khá giống với virtual machines, `OS container` được thiết kế nhỏ gọn hơn, là giải 
+pháp chạy đa tiến trình tập trung chủ yếu vào việc cung cấp một môi trường runtime 
+(OS), chạy các dịch vụ như init, sshd, syslog. OS container thường được sử dụng để 
+triển khai các ứng dụng có dạng monolithic truyền thống khi triển khai với các đặc 
+tính chung là hạ tầng vật lý của host, các công cụ và cấu hình trên các VMs. Có 
+nhiều công cụ hỗ trợ triển khai OS containers như LXD, BSD jails,...
 
-`Application container` cho phép chạy đơn tiến trình. Mục đích chủ yếu là hỗ trợ 
-các dịch vụ nhỏ hơn, dễ dàng triển khai trên các ứng dụng phân tán. 
+Khác với OS Container, `Application container` cho phép chạy đơn tiến trình với
+mục tiêu chính là hỗ trợ các dịch vụ nhỏ (microservice), dễ dàng triển khai các 
+ứng dụng phân tán. Lúc này, mỗi ứng dụng có thể được chia ra nhiều tasks đóng gói 
+thành các images. Bằng cách sử dụng các images này, mỗi task sẽ được triển khai 
+trên một container một cách độc lập. Bên cạnh Docker, chúng ta có thể kể đến một 
+vài công cụ phổ biến khác giúp triển khai `Application container` như Kubernates, 
+CRI-O,...
+
