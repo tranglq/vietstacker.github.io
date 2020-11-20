@@ -110,6 +110,56 @@ Docker. Đúng vậy, Docker gần gũi với chúng ta tới mức rất nhiề
 dần lầm tưởng Docker là container, container chính là Docker rồi. Vậy hai khái niệm này có phải là một không nhỉ? Hôm nay tớ và các bạn sẽ 
 cùng nhau làm rõ vấn đề nhé!
 
-Đầu tiên, tớ xin khẳng định với mọi người, Docker hoàn toàn không phải
-container và hai khái niệm này chúng ta không thể gộp làm một nhé. Docker
+Đầu tiên, Docker hoàn toàn không phải container. Chúng ta không thể gộp hai khái
+ niệm này làm một nhé. Cụ thể thì:
+  - Docker là một nền tảng cho phép chúng ta triển khai các ứng dụng
+  trên môi trường container. 
+  - Container là một nhóm bao gồm các tiến trình chạy trên một single host
+  có những đặc tính chung.
 
+Chính vì vậy, hiện nay ngoài Docker ra, đã có rất nhiều các nền tảng hỗ trợ triển
+khai công nghệ container như LXC/LXD, rkt, FreeBSD Jails, Solaris Zones,... Một
+số các nhà chạy đua phát triển công nghệ này phải kể tới Acquia, Amazon web 
+services, Google, DigitalOcean,...
+
+#### Container và các dạng container
+##### Container
+Như mình đã trình bày phía trên, container là nhóm các tiến trình chạy trên một
+single host có những đặc tính chung. Những đặc tính chung ấy có thể là: CPU, 
+storage, OS kernel,... 
+
+Ngày nay, công nghệ container càng lúc càng phát triển nhờ những lợi ích đem
+lại cho các nhà phát triển như:
+  - Deploy ứng dụng nhanh chóng trên nhiều môi trường khác nhau nhưng nhất quán về code và cấu hình
+  - Tăng cường tính linh động
+  - Khả năng tự phục hồi, tự mở rộng
+  - Giảm chi phí bằng cách tối ưu hoá tài nguyên
+  - Cải thiện thời gian hoạt động
+
+Với container, các developer có thể tự động hoá quá trình cung cấp các dịch vụ, build và chạy các container trên nhiều môi trường (Dev, Test, Perf) mà vẫn đảm bảo
+chúng có sự thống nhất. Quá trình triển khai sản phẩm lặp đi lặp lại giờ đây được thực hiện nhanh chóng hơn, dễ dàng hơn. Trong khi đó các nhà quản lý và doanh nghiệp
+lại yêu thích công nghệ container bởi khả năng chạy trên nhiều cơ sở hạ tầng, tăng 
+năng suất công việc, giảm chi phí thiết bị, chuẩn hoá các tiến trình và đặc biệt giảm thiểu khả năng rủi ro trong quá trình triển khai sản phẩm.
+
+Hiện nay ngoài Docker ra cũng có rất nhiều các phần mềm hỗ trợ triển khai công
+nghệ container như LXC, Rkt, FreeBSD Jails, Solaris Zones, LXD. Theo thống kê
+tờ báo nghiên cứu `Cloud Container Technologies` của Đại học Carnegie Mellon, Mỹ năm
+2017, Docker chiếm tỉ lệ được ưu chuộng cao nhất với 40%. Theo sau đó là LXC với
+21%, Kubernetes 9%, OpenVZ 9%,... Sở dĩ Docker được phổ biến nhanh chóng như vậy
+bởi đây là một sản phẩm mã nguồn mở nắm bắt sớm được sự phát triển của công nghệ
+mới, công nghệ container.
+
+##### Giới thiệu về 2 loại container cơ bản
+
+Dựa theo định nghĩa như đã nêu trên, người ta chia container ra làm 2 loại: `OS
+Container` và `Application Container`.
+
+Khá giống với virtual machines, `OS container` là giải pháp chạy đa tiến trình tập 
+trung vào chủ yếu vào việc cung cấp một môi trường runtime hoàn thiện như OS, chạy
+các dịch vụ như init, sshd, syslog. OS container thường được sử dụng để triển khai
+các ứng dụng có dạng monolithic truyền thống vì chúng cho phép triển khai cơ sở
+hạ tầng của host, các công cụ và cấu hình trên các VMs. Có nhiều cách khác nhau để
+triển khai System containers như BSD jails,...
+
+`Application container` cho phép chạy đơn tiến trình. Mục đích chủ yếu là hỗ trợ 
+các dịch vụ nhỏ hơn, dễ dàng triển khai trên các ứng dụng phân tán. 
