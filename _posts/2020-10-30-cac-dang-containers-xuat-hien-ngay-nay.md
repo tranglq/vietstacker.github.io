@@ -69,7 +69,10 @@ Kết luận
 - Có nhiều dạng container, nhiều nhà cung cấp công nghệ container
 - Tuỳ vào mục đích sử dụng có thể lựa chọn loại container phù hợp
 và kết hợp sử dụng nhiều dạng container trong một mô hình kiến trúc
----------------
+
+---
+
+
 
 Chào các bạn, là mình, tranglua đây! 
 
