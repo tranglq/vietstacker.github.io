@@ -69,38 +69,8 @@ Kết luận
 - Có nhiều dạng container, nhiều nhà cung cấp công nghệ container
 - Tuỳ vào mục đích sử dụng có thể lựa chọn loại container phù hợp
 và kết hợp sử dụng nhiều dạng container trong một mô hình kiến trúc
----
-Reference
+---------------
 
-Blog
-1. https://medium.com/docker-containers/types-of-container-technologies-cbeb6e09aaa0
-2. https://jfrog.com/knowledge-base/6-alternatives-to-docker-all-in-one-solutions-and-standalone-container-tools/
-3. https://www.cio.com/article/2924995/what-are-containers-and-why-do-you-need-them.html 
-4. https://www.contino.io/insights/beyond-docker-other-types-of-containers 
-5. https://learn.g2.com/container-technology 
-
-Articles
-1. https://www.researchgate.net/publication/325534952_Containers_for_Virtualization_An_Overview
-2. https://www.researchgate.net/publication/310514065_A_Performance_Study_of_Containers_in_Cloud_Environment
-3. https://www.researchgate.net/publication/316903410_Cloud_Container_Technologies_a_State-of-the-Art_Review
-4. https://core.ac.uk/download/pdf/147608158.pdf
-
-Books
-1. https://www.vmware.com/content/dam/digitalmarketing/vmware/en/pdf/ebook/vmware-press-ebook-on-containers-and-kubernetes.pdf
-2. https://www.mindtree.com/sites/default/files/2019-01/Containers%20in%20enterprise.pdf
-3. https://www.qcmtech.com/wp-content/uploads/2017/09/HPE-pub-10010-Containers-for-Dummies.pdf
-4. https://linuxacademy.com/templates/default/assets/pdf/containers-for-everyone-ebook.pdf 
-5. https://www.linuxjournal.com/sites/default/files/2018-11/GeekGuide-Puppet-Containers101.pdf 
-6. https://www.liquidtechnology.net/wp-content/uploads/2018/01/Container-Technology.pdf
-
-Companies
-1. Containers at google: https://cloud.google.com/containers
-2. Containers on Compute Engine: https://cloud.google.com/compute/docs/containers
-3. https://linuxcontainers.org
-4. https://www.docker.com/resources/what-container 
-5. Containers on AWS: https://aws.amazon.com/vi/containers/
-
---------
 Chào các bạn, là mình, tranglua đây! 
 
 Như các bạn đã biết, Container hiện nay đã trở thành một khái niệm vô 
@@ -122,8 +92,8 @@ khai công nghệ container như LXC/LXD, rkt, FreeBSD Jails, Solaris Zones,... 
 số các nhà chạy đua phát triển công nghệ này phải kể tới Acquia, Amazon web 
 services, Google, DigitalOcean,...
 
-#### Container và các dạng container
-##### Container
+### Container và các dạng container
+#### Container
 Như mình đã trình bày phía trên, container là nhóm các tiến trình chạy trên một
 single host có những đặc tính chung dựa trên các layer của kiến trúc hệ thống. 
 Những đặc tính chung ấy có thể là: CPU, storage, OS kernel,... 
@@ -149,11 +119,12 @@ tờ báo nghiên cứu `Cloud Container Technologies` của Đại học Carneg
 bởi đây là một sản phẩm mã nguồn mở nắm bắt sớm được sự phát triển của công nghệ
 mới, công nghệ container.
 
-##### Giới thiệu về 2 loại container cơ bản
+#### Giới thiệu về 2 loại container cơ bản
 
 Dựa theo định nghĩa như đã nêu trên, người ta chia container ra làm 2 loại: `OS
 Container` và `Application Container`.
 
+##### OS container
 `OS container` là giải 
 pháp chạy đa tiến trình tập trung chủ yếu vào việc cung cấp một môi trường runtime 
 (OS) chia sẻ OS kernel nhưng độc lập về vùng tài nguyên người dùng. Khá giống với virtual 
@@ -163,6 +134,7 @@ tài nguyên được gán cho container đó. OS container thường được s
 triển khai các ứng dụng có dạng monolithic truyền thống khi triển khai. Có 
 nhiều công cụ hỗ trợ triển khai OS containers như LXD, BSD jails,...
 
+##### Application container
 Khác với OS Container, `Application container` cho phép chạy đơn tiến trình với
 mục đích chính là hỗ trợ các dịch vụ nhỏ (microservice), dễ dàng triển khai các 
 ứng dụng phân tán. Lúc này, mỗi ứng dụng có thể được chia ra nhiều tasks đóng gói 
@@ -171,7 +143,7 @@ trên một container một cách độc lập. Bên cạnh Docker, chúng ta c�
 vài công cụ phổ biến khác giúp triển khai `Application container` như Kubernates, 
 CRI-O,...
 
-##### So sánh hai loại container 
+#### So sánh hai loại container 
 
 Dưới đây là bảng so sánh giữa `Application container` và `System container`
 
@@ -198,3 +170,41 @@ Mong rằng bài viết này có thể giúp các bạn có cái nhìn rõ nét 
 `Docker` và `container`, đồng thời có thể đưa ra được những lựa chọn về loại container 
 phù hợp nhất cho đội mình. Và đừng quên `Docker` không phải là lựa chọn duy nhất khi bạn
 muốn áp dụng công nghệ container đâu nhé! 
+
+---
+Reference
+
+Blog
+
+0. https://github.com/saschagrunert/demystifying-containers
+1. https://medium.com/docker-containers/types-of-container-technologies-cbeb6e09aaa0
+2. https://jfrog.com/knowledge-base/6-alternatives-to-docker-all-in-one-solutions-and-standalone-container-tools/
+3. https://www.cio.com/article/2924995/what-are-containers-and-why-do-you-need-them.html 
+4. https://www.contino.io/insights/beyond-docker-other-types-of-containers 
+5. https://learn.g2.com/container-technology 
+
+Articles
+
+6. https://www.researchgate.net/publication/325534952_Containers_for_Virtualization_An_Overview
+7. https://www.researchgate.net/publication/310514065_A_Performance_Study_of_Containers_in_Cloud_Environment
+8. https://www.researchgate.net/publication/316903410_Cloud_Container_Technologies_a_State-of-the-Art_Review
+9. https://core.ac.uk/download/pdf/147608158.pdf
+
+Books
+
+10. https://www.vmware.com/content/dam/digitalmarketing/vmware/en/pdf/ebook/vmware-press-ebook-on-containers-and-kubernetes.pdf
+11. https://www.mindtree.com/sites/default/files/2019-01/Containers%20in%20enterprise.pdf
+12. https://www.qcmtech.com/wp-content/uploads/2017/09/HPE-pub-10010-Containers-for-Dummies.pdf
+13. https://linuxacademy.com/templates/default/assets/pdf/containers-for-everyone-ebook.pdf 
+14. https://www.linuxjournal.com/sites/default/files/2018-11/GeekGuide-Puppet-Containers101.pdf 
+15. https://www.liquidtechnology.net/wp-content/uploads/2018/01/Container-Technology.pdf
+
+Others
+
+16. Containers at google: https://cloud.google.com/containers
+17. Containers on Compute Engine: https://cloud.google.com/compute/docs/containers
+18. https://linuxcontainers.org
+19. https://www.docker.com/resources/what-container 
+20. Containers on AWS: https://aws.amazon.com/vi/containers/
+
+--------
