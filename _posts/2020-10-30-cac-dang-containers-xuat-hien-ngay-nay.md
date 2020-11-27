@@ -22,53 +22,40 @@ Tóm tắt:
 1. Đặt vấn đề
 - Container có phải Docker không?
 - Có những loại container nào?
-- Có những công nghệ container nào đang phát triển ngoài Docker?
-- Một số công ty công nghệ đang phát triển công nghệ containers
-  - Acquia, Amazon web services, Google, DigitalOcean 
-- Các loại container không chỉ Docker container
+- Có những công cụ triển khai container nào đang phát triển? Docker có nằm trong số đó?
+  - External tool --> CRI --> high level CR --> low level CR ----> Container
 
-2. Container và các dạng container
-  2.1. Container
-    - Khái niệm
-    - Mục đích sử dụng container:
-      - Deploy ứng dụng nhanh chóng trên nhiều môi trường khác nhau nhưng nhất quán về code và cấu hình
-      - Tăng cường tính linh động
-      - Khả năng tự phục hồi, tự mở rộng
-      - Giảm chi phí bằng cách tối ưu hoá tài nguyên
-      - Cải thiện thời gian hoạt động
-    - Container với mỗi đối tượng người dùng:
-      - Deverlopers
-      - IT management
-      - Doanh nghiệp 
-    - Một số nhà cung cấp công nghệ container:
-      - Docker, LXC, rkt, FreeBSD Jails, Solaris Zones, LXD
-      - Tỷ lệ được ưa chuộng, nguyên nhân
-  2.2. Giới thiệu về 2 dạng containers cơ bản: 
-  - OS container
-    - Khái niệm
-    - Mô hình kiến trúc của OS container: hình ảnh, mô tả
-    - Vị trí, vai trò của OS container trong kiến trúc ứng dụng
-    - Một số công nghệ OS container phổ biến: 
-      - LXC/LXD
-      - OpenVZ
-      - Linux VServer,...
-  - Application container
-    - Khái niệm
-    - Mô hình kiến trúc của application container: hình ảnh, mô tả
-    - Vị trí, vai trò của OS container trong kiến trúc ứng dụng
-    - Một số công nghệ application container phổ biến: 
-      - Docker
-      - CRI-O
-      - Kubernetes...
-  2.3. So sánh VM - OS container - Application container
-  - Vị trí, vai trò trong kiến trúc ứng dụng
-Kết luận
+2. Container
+  - Container là gì? Đặc điểm container
+    - Namespace
+    - Cgroup
+  - 2 dạng containers: OS container và Application Container
+  - Container nằm ở đâu trong kiến trúc máy tính
+  - Nên áp dụng Công nghệ container khi nào
 
-4. Kết luận
-- Container không phải là docker. Docker là một nhà cung cấp công nghệ container phổ biến hiện nay. 
-- Có nhiều dạng container, nhiều nhà cung cấp công nghệ container
-- Tuỳ vào mục đích sử dụng có thể lựa chọn loại container phù hợp
-và kết hợp sử dụng nhiều dạng container trong một mô hình kiến trúc
+3. Container runtime
+  - Low level CR
+    - Low level CR là gì?
+    - Cung cấp những tính năng gì?
+    - Sử dụng khi nào?
+    - Low level CR phổ biến: RunC, Kata Container
+  - High level
+    - High level CR là gì?
+    - Cung cấp nhưng tính năng gì? Khác gì với Low level CR?
+    - Sử dụng khi nào?
+    - High level CR phổ biến: CRI-O, Containerd, Docker Engine,...
+
+4. Container runtime interface (CRI)
+  - CRI là gì? Khác gì với CR
+  - Cung cấp những tính năng gì?
+  - Sử dụng khi nào
+  - CRI phổ biến: Kubernetes
+
+5. Kết luận
+- Container không phải là docker. 
+- Có nhiều dạng công cụ hỗ trợ triển khai container. 
+- Việc triển khai container có thể được thực hiện bởi các công cụ khác nhau nhưng
+đều dựa trên một chuẩn container (OCI) thống nhất. 
 
 ---
 
@@ -80,17 +67,17 @@ Như các bạn đã biết, Container hiện nay đã trở thành một khái 
 cùng quen thuộc không chỉ với cộng đồng OpenInfra chúng mình rồi phải
 không. Khi nhắc tới container, mọi người thường liên tưởng ngay tới 
 Docker. Đúng vậy, Docker gần gũi với chúng ta tới mức rất nhiều bạn đã
-dần lầm tưởng Docker là container, container chính là Docker rồi. Vậy hai khái niệm này có phải là một không nhỉ? Hôm nay tớ và các bạn sẽ 
-cùng nhau làm rõ vấn đề nhé!
+dần lầm tưởng Docker là container, container chính là Docker rồi. Vậy hai khái niệm này có phải là một không nhỉ? Hôm nay mình và các bạn sẽ 
+cùng nhau làm rõ vấn đề này nhé!
 
 Đầu tiên, Docker hoàn toàn không phải container. Chúng ta không thể gộp hai khái
- niệm này làm một nhé. Cụ thể thì:
+niệm này làm một nhé. Cụ thể thì:
   - Docker là một nền tảng cho phép chúng ta triển khai các ứng dụng
   trên môi trường container. 
   - Container là một nhóm bao gồm các tiến trình chạy trên một single host
   có những đặc tính chung.
 
-Chính vì vậy, hiện nay ngoài Docker ra, đã có rất nhiều các nền tảng hỗ trợ triển
+Chính vì vậy, hiện nay ngoài Docker ra, đã có rất nhiều các nền tảng công cụ hỗ trợ triển
 khai công nghệ container như LXC/LXD, rkt, FreeBSD Jails, Solaris Zones,... Một
 số các nhà chạy đua phát triển công nghệ này phải kể tới Acquia, Amazon web 
 services, Google, DigitalOcean,...
