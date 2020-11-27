@@ -78,9 +78,7 @@ niệm này làm một nhé. Cụ thể thì:
   có những đặc tính chung.
 
 Chính vì vậy, hiện nay ngoài Docker ra, đã có rất nhiều các nền tảng công cụ hỗ trợ triển
-khai công nghệ container như LXC/LXD, rkt, FreeBSD Jails, Solaris Zones,... Một
-số các nhà chạy đua phát triển công nghệ này phải kể tới Acquia, Amazon web 
-services, Google, DigitalOcean,...
+khai công nghệ container như Containerd, RunC, LXD, KataContainers,... 
 
 ### Container và các dạng container
 #### Container
@@ -88,43 +86,15 @@ Như mình đã trình bày phía trên, container là nhóm các tiến trình 
 single host có những đặc tính chung dựa trên các layer của kiến trúc hệ thống. 
 Những đặc tính chung ấy có thể là: CPU, storage, OS kernel,... 
 
-Ngày nay, công nghệ container càng lúc càng phát triển nhờ những lợi ích đem
-lại cho các nhà phát triển như:
-  - Deploy ứng dụng nhanh chóng trên nhiều môi trường khác nhau nhưng nhất quán về code và cấu hình
-  - Tăng cường tính linh động
-  - Khả năng tự phục hồi, tự mở rộng
-  - Giảm chi phí bằng cách tối ưu hoá tài nguyên
-  - Cải thiện thời gian hoạt động
 
-Với container, các developer có thể tự động hoá quá trình cung cấp các dịch vụ, build và chạy các container trên nhiều môi trường (Dev, Test, Perf) mà vẫn đảm bảo
-chúng có sự thống nhất. Quá trình triển khai sản phẩm lặp đi lặp lại giờ đây được thực hiện nhanh chóng hơn, dễ dàng hơn. Trong khi đó các nhà quản lý và doanh nghiệp
-lại yêu thích công nghệ container bởi khả năng chạy trên nhiều cơ sở hạ tầng, tăng 
-năng suất công việc, giảm chi phí thiết bị, chuẩn hoá các tiến trình và đặc biệt giảm thiểu khả năng rủi ro trong quá trình triển khai sản phẩm.
 
-Hiện nay ngoài Docker ra cũng có rất nhiều các phần mềm hỗ trợ triển khai công
-nghệ container như LXC, Rkt, FreeBSD Jails, Solaris Zones, LXD. Theo thống kê
-tờ báo nghiên cứu `Cloud Container Technologies` của Đại học Carnegie Mellon, Mỹ năm
-2017 [6], Docker chiếm tỉ lệ được ưu chuộng cao nhất với 40%. Theo sau đó là LXC với
-21%, Kubernetes 9%, OpenVZ 9%,... Sở dĩ Docker được phổ biến nhanh chóng như vậy
-bởi đây là một sản phẩm mã nguồn mở nắm bắt sớm được sự phát triển của công nghệ
-mới, công nghệ container.
-
-#### Giới thiệu về 2 loại container cơ bản
-
-Dựa theo định nghĩa như đã nêu trên, người ta chia container ra làm 2 loại: `OS
-Container` và `Application Container`.
-
-##### OS container
-`OS container` là giải 
+Có 2 loại container: `OS Container` và `Application Container`. `OS container` là giải 
 pháp chạy đa tiến trình tập trung chủ yếu vào việc cung cấp một môi trường runtime 
 (OS) chia sẻ OS kernel nhưng độc lập về vùng tài nguyên người dùng. Khá giống với virtual 
 machines, chúng ta có thể cài đặt, cấu hình và chạy các ứng dụng, thư viện,...
 Bất kỳ các đối tượng nào có mặt trong container đều chỉ có thể nhận biết được vùng
 tài nguyên được gán cho container đó. OS container thường được sử dụng để 
-triển khai các ứng dụng có dạng monolithic truyền thống khi triển khai. Có 
-nhiều công cụ hỗ trợ triển khai OS containers như LXD, BSD jails,...
-
-##### Application container
+triển khai các ứng dụng có dạng monolithic truyền thống khi triển khai. 
 Khác với OS Container, `Application container` cho phép chạy đơn tiến trình với
 mục đích chính là hỗ trợ các dịch vụ nhỏ (microservice), dễ dàng triển khai các 
 ứng dụng phân tán. Lúc này, mỗi ứng dụng có thể được chia ra nhiều tasks đóng gói 
@@ -133,33 +103,13 @@ trên một container một cách độc lập. Bên cạnh Docker, chúng ta c�
 vài công cụ phổ biến khác giúp triển khai `Application container` như Kubernates, 
 CRI-O,...
 
-#### So sánh hai loại container 
-
-Dưới đây là bảng so sánh giữa `Application container` và `System container`
-
-|                    | Application Container                |System Container
-|--------------------|--------------------------------------|----------------------
-| Content            | Contain a single process. Build on cgroups, namespaces, native process resource isolation             | Contain a complete runtime environment. Build on top of OS container technology
-| Filesystem         | Layered ﬁlesystem                    | Filesystem neutral
-| Design purpose     | Run micro services                   | Provide a lightweight virtual machine
-| Usage Scenario     | Used for distributing applications   | Used for providing underlying infrastructure
-| Examples           | Docker, Rocket, Kubernetes           | LXC, OpenVZ, LinuxVServer, BSD Jails,...
-
-**Bảng 1.** Bảng so sánh Application container và OS container trích trong `A Performance 
-Study of Containers in Cloud Environment`, trường Đại học Bách khoa Huazhong, Trung Quốc [7]
-(có chỉnh sửa bổ sung)
-
 Như vậy, nếu như bạn muốn đóng gói và phân tán ứng dụng của bạn thành nhiều thành phần,
 `Application container` sẽ giúp bạn làm điều đó cực kỳ tốt. Còn nếu bạn cần một hệ điều
 hành cài đặt nhiều thư viện, ngôn ngữ, database,... khác nhau thì `OS container` là một
 lựa chọn phù hợp hơn cả.
 
 ##### Tổng kết
-Trên đây mình đã trình bày về container cũng như những loại container đang có hiện nay.
-Mong rằng bài viết này có thể giúp các bạn có cái nhìn rõ nét hơn về các khái niệm giữa 
-`Docker` và `container`, đồng thời có thể đưa ra được những lựa chọn về loại container 
-phù hợp nhất cho đội mình. Và đừng quên `Docker` không phải là lựa chọn duy nhất khi bạn
-muốn áp dụng công nghệ container đâu nhé! 
+
 
 ---
 Reference
